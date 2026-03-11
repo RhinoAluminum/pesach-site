@@ -790,6 +790,8 @@
 
     <input type="text" id="cust-name" placeholder="Full Name *" style="width:100%; padding:10px 12px; margin-bottom:8px; border:1px solid #ddd; border-radius:8px; font-size:0.9rem; font-family:'Barlow',sans-serif; outline:none;" />
 
+    <input type="email" id="cust-email" placeholder="Email Address *" style="width:100%; padding:10px 12px; margin-bottom:8px; border:1px solid #ddd; border-radius:8px; font-size:0.9rem; font-family:'Barlow',sans-serif; outline:none;" />
+
     <input type="tel" id="cust-phone" placeholder="Phone Number *" style="width:100%; padding:10px 12px; margin-bottom:8px; border:1px solid #ddd; border-radius:8px; font-size:0.9rem; font-family:'Barlow',sans-serif; outline:none;" />
 
     <input type="text" id="cust-address" placeholder="Shipping Address *" style="width:100%; padding:10px 12px; margin-bottom:8px; border:1px solid #ddd; border-radius:8px; font-size:0.9rem; font-family:'Barlow',sans-serif; outline:none;" />
@@ -928,17 +930,24 @@ function showForm(e) {
 // EmailJS init
 emailjs.init('k8O1Y6eneHrNDLJrZ');
 
+let orderSubmitting = false;
+
 async function handlePayNow(e) {
   e.preventDefault();
+  if (orderSubmitting) return;
+
   const name = document.getElementById('cust-name').value.trim();
+  const email = document.getElementById('cust-email').value.trim();
   const phone = document.getElementById('cust-phone').value.trim();
   const address = document.getElementById('cust-address').value.trim();
   const city = document.getElementById('cust-city').value.trim();
 
-  if (!name || !phone || !address || !city) {
+  if (!name || !email || !phone || !address || !city) {
     alert('Please fill in all your details before paying.');
     return;
   }
+
+  orderSubmitting = true;
 
   const total = getTotal();
   if (total === 0) { alert('Your cart is empty!'); return; }
@@ -967,12 +976,14 @@ async function handlePayNow(e) {
       alert('Could not create payment link. Please try again.');
       btn.innerHTML = origText;
       btn.style.pointerEvents = '';
+      orderSubmitting = false;
     }
   } catch (err) {
     console.error('Square API error:', err);
     alert('Payment error. Please try again.');
     btn.innerHTML = origText;
     btn.style.pointerEvents = '';
+    orderSubmitting = false;
   }
 }
 
