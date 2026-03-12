@@ -1058,10 +1058,9 @@ function submitOrder(total, cust) {
     internalNotes: 'Requested ship date: ' + cust.shipDate
   };
 
-  const ssAuth = btoa('342c5a334ec940b8a6c94c462ca1145b:05a53637fbaa4595883eecd020f52910');
-  fetch('https://ssapi.shipstation.com/orders/createorder', {
+  fetch('/.netlify/functions/create-order', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Basic ' + ssAuth },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(ssOrder)
   }).then(r => r.json()).then(d => console.log('ShipStation order:', d.orderId || d))
     .catch(err => console.error('ShipStation error:', err));
