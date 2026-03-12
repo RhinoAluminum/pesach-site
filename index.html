@@ -912,23 +912,98 @@ function switchPage(page) {
   document.getElementById('nav-' + page).classList.add('active');
 }
 
-function checkout() {
+async function checkout() {
   const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
   if (totalItems === 0) return;
-  const lines = Object.entries(cart).map(([id, qty]) => {
-    const p = getProductById(id);
-    return p ? `${p.name} x${qty} — $${(p.price * qty).toFixed(2)}` : '';
-  }).filter(Boolean).join('%0A');
+
   let subtotal = 0;
   for (const [id, qty] of Object.entries(cart)) {
     const p = getProductById(id);
     if (p) subtotal += p.price * qty;
   }
-  const shipping = totalItems * 5;
-  const grand = subtotal + shipping;
-  const subject = encodeURIComponent('Pesach 2026 Bulk Order');
-  const body = encodeURIComponent(`Hi Leo,\n\nI'd like to place a bulk order:\n\n${Object.entries(cart).map(([id,qty])=>{const p=getProductById(id);return p?`${p.name} x${qty} — $${(p.price*qty).toFixed(2)}`:''}).filter(Boolean).join('\n')}\n\nSubtotal: $${subtotal.toFixed(2)}\nShipping: $${shipping.toFixed(2)}\nTotal: $${grand.toFixed(2)}\n\nThank you!`);
-  window.location.href = `mailto:Leo@RhinoAluminum.com?subject=${subject}&body=${body}`;
+  const total = subtotal;
+
+  const btn = document.getElementById('checkout-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Preparing checkout...';
+
+  try {
+    const response = await fetch('/.netlify/functions/create-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: total.toFixed(2) })
+    });
+
+    const data = await response.json();
+
+    if (data.payment_link && data.payment_link.url) {
+      submitOrder(total);
+      window.location.href = data.payment_link.url;
+    } else {
+      console.error('Square error:', data);
+      alert('Could not create payment link. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Proceed to Checkout';
+    }
+  } catch (err) {
+    console.error('Square API error:', err);
+    alert('Payment error. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Proceed to Checkout';
+  }
+}
+
+function submitOrder(total) {
+  const ids = Object.keys(cart);
+  if (!total) total = 0;
+  for (const [id, qty] of Object.entries(cart)) {
+    const p = getProductById(id);
+    if (p) total += p.price * qty;
+  }
+
+  let itemsText = '';
+  ids.forEach(id => {
+    const p = getProductById(id);
+    if (p) itemsText += `• ${p.name}  x${cart[id]}  =  $${(p.price * cart[id]).toFixed(2)}\n`;
+  });
+
+  const ssItems = ids.map(id => {
+    const p = getProductById(id);
+    return p ? { name: p.name, quantity: cart[id], unitPrice: p.price } : null;
+  }).filter(Boolean);
+
+  const ssOrder = {
+    orderNumber: 'PESACH-' + Date.now(),
+    orderDate: new Date().toISOString(),
+    orderStatus: 'awaiting_shipment',
+    billTo: { name: 'Bulk Order', street1: 'TBD', city: 'TBD', state: 'NY', postalCode: '00000', country: 'US' },
+    shipTo: { name: 'Bulk Order', street1: 'TBD', city: 'TBD', state: 'NY', postalCode: '00000', country: 'US' },
+    items: ssItems,
+    amountPaid: total,
+    taxAmount: 0,
+    shippingAmount: 0
+  };
+
+  const ssAuth = btoa('342c5a334ec940b8a6c94c462ca1145b:05a53637fbaa4595883eecd020f52910');
+  fetch('https://ssapi.shipstation.com/orders/createorder', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Basic ' + ssAuth },
+    body: JSON.stringify(ssOrder)
+  }).then(r => r.json()).then(d => console.log('ShipStation order:', d.orderId || d))
+    .catch(err => console.error('ShipStation error:', err));
+
+  if (typeof emailjs !== 'undefined') {
+    emailjs.send('service_wjcd686', 'template_q10q4mr', {
+      customer_name: 'Bulk Order',
+      customer_phone: 'N/A',
+      customer_email: 'N/A',
+      customer_address: 'TBD',
+      customer_city: 'TBD',
+      ship_date: 'Not specified',
+      order_items: itemsText,
+      order_total: '$' + total.toFixed(2)
+    }).catch(err => console.error('Email error:', err));
+  }
 }
 
 // ===== LIGHTBOX =====
@@ -1273,5 +1348,7 @@ document.addEventListener('keydown', (e) => {
 
 updateCartSummary();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init('k8O1Y6eneHrNDLJrZ');</script>
 </body>
 </html>
