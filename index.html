@@ -216,6 +216,15 @@
   }
   .product-item.in-cart { border-color: rgba(201,168,76,0.4); }
 
+  .product-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.05);
+  }
+
   .product-info { flex: 1; min-width: 0; }
   .product-name {
     font-size: 0.85rem;
@@ -577,67 +586,67 @@ const PRODUCTS = {
   plates: {
     title: "🍽️ Plates & Cutlery",
     items: [
-      { id: "p1", name: "9\" Plastic Plates – 400 Count", price: 45 },
-      { id: "p2", name: "7\" Plastic Plates – 400 Count", price: 28 },
-      { id: "p3", name: "Heavy Duty Plastic Forks – 1,000 Count", price: 42 },
-      { id: "p4", name: "Heavy Duty Plastic Knives – 1,000 Count", price: 42 },
-      { id: "p5", name: "Heavy Duty Plastic Soup Spoons – 1,000 Count", price: 42 },
-      { id: "p6", name: "Heavy Duty Plastic Teaspoons – 1,000 Count", price: 42 },
-      { id: "p7", name: "12 oz Plastic Bowls – 300 Count", price: 55 },
-      { id: "p8", name: "12 oz Biodegradable Bowls – 1,000 Count", price: 87 },
+      { id: "p1", name: "9\" Plastic Plates – 400 Count", price: 45, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p2", name: "7\" Plastic Plates – 400 Count", price: 28, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p3", name: "Heavy Duty Plastic Forks – 1,000 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p4", name: "Heavy Duty Plastic Knives – 1,000 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p5", name: "Heavy Duty Plastic Soup Spoons – 1,000 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p6", name: "Heavy Duty Plastic Teaspoons – 1,000 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p7", name: "12 oz Plastic Bowls – 300 Count", price: 31, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/71EsuBNtX9L._AC_SL1500__1.jpg?v=1773285651" },
+      { id: "p8", name: "12 oz Biodegradable Bowls – 1,000 Count", price: 87, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
     ]
   },
   cups: {
     title: "🥤 Cups & Lids",
     items: [
-      { id: "c1", name: "7 oz Translucent Cups – 1,200 Count", price: 38 },
-      { id: "c2", name: "9 oz Clear Plastic Cups – 400 Count", price: 22 },
-      { id: "c3", name: "16 oz Clear Cups with Lids – 500 Count", price: 48 },
-      { id: "c4", name: "24 oz Clear Cups with Lids – 300 Count", price: 42 },
-      { id: "c5", name: "12 oz Iced Coffee Cups with Lids – 500 Count", price: 45 },
+      { id: "c1", name: "7 oz Translucent Cups – 1,200 Count", price: 38, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/51HK25Ee5EL._AC_SL1200_5123589e-2ffa-4543-9627-c7cf95184acf.jpg?v=1771607739" },
+      { id: "c2", name: "9 oz Clear Plastic Cups – 400 Count", price: 22, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/51HK25Ee5EL._AC_SL1200.jpg?v=1771607710" },
+      { id: "c3", name: "16 oz Clear Cups with Lids – 500 Count", price: 62, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_17_32PM_9c4c5370-0bb9-413b-85cb-94b7b8e1273c.png?v=1771607890" },
+      { id: "c4", name: "24 oz Clear Cups with Lids – 300 Count", price: 64, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_05_12PM_0acec859-48d2-43aa-a035-5c3bc466530f.png?v=1771607173" },
+      { id: "c5", name: "12 oz Iced Coffee Cups with Lids – 500 Count", price: 62, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_17_32PM_f3300999-18ea-48c1-a192-423960a9b3eb.png?v=1771607923" },
     ]
   },
   pans: {
     title: "🍳 Aluminum Pans & Foil",
     items: [
-      { id: "a1", name: "Half Size Aluminum Pans Shallow 1.25\" – 100 Count", price: 38 },
-      { id: "a2", name: "Half Size Aluminum Pans Medium 2.25\" – 100 Count", price: 42 },
-      { id: "a3", name: "Full Size Aluminum Pans – 50 Count", price: 48 },
-      { id: "a4", name: "Round Aluminum Pans – 100 Count", price: 35 },
-      { id: "a5", name: "Square Aluminum Pans – 100 Count", price: 35 },
-      { id: "a6", name: "1 lb Oblong Takeout Pans – 500 Count", price: 52 },
-      { id: "a7", name: "12\" Heavy Duty Aluminum Foil Roll – 350 sq ft", price: 28 },
-      { id: "a8", name: "18\" Heavy Duty Aluminum Foil Roll – 525 sq ft", price: 42 },
-      { id: "a9", name: "Aluminum Pop-Up Foil Sheets – 300 Count", price: 32 },
+      { id: "a1", name: "Half Size Aluminum Pans Shallow 1.25\" – 100 Count", price: 38, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a2", name: "Half Size Aluminum Pans Medium 2.25\" – 100 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a3", name: "Full Size Aluminum Pans – 50 Count", price: 48, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a4", name: "Round Aluminum Pans – 100 Count", price: 35, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a5", name: "Square Aluminum Pans – 100 Count", price: 35, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a6", name: "1 lb Oblong Takeout Pans – 500 Count", price: 65, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/1lbOblongPan1.png?v=1771611894" },
+      { id: "a7", name: "12\" Heavy Duty Aluminum Foil Roll – 350 sq ft", price: 30, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/12RhinoImage4.jpg?v=1771614143" },
+      { id: "a8", name: "18\" Heavy Duty Aluminum Foil Roll – 525 sq ft", price: 55, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/18RhinoImage1.jpg?v=1771614314" },
+      { id: "a9", name: "Aluminum Pop-Up Foil Sheets – 300 Count", price: 18, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/RhinoPopupImage5.jpg?v=1771613730" },
     ]
   },
   containers: {
     title: "📦 Containers & Bowls",
     items: [
-      { id: "d1", name: "8 oz Deli Containers with Lids – 200 Count", price: 32 },
-      { id: "d2", name: "16 oz Deli Containers with Lids – 200 Count", price: 36 },
-      { id: "d3", name: "32 oz Deli Containers with Lids – 200 Count", price: 42 },
-      { id: "d4", name: "24 oz Black Round Microwave Containers – 150 Set", price: 48 },
-      { id: "d5", name: "32 oz Black Round Microwave Containers – 150 Set", price: 52 },
-      { id: "d6", name: "Salad Bowls 32 oz with Lids – 50 Count", price: 28 },
-      { id: "d7", name: "Salad Bowls 48 oz with Lids – 50 Count", price: 32 },
+      { id: "d1", name: "8 oz Deli Containers with Lids – 200 Count", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373" },
+      { id: "d2", name: "16 oz Deli Containers with Lids – 200 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373" },
+      { id: "d3", name: "32 oz Deli Containers with Lids – 200 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373" },
+      { id: "d4", name: "24 oz Black Round Microwave Containers – 150 Set", price: 52, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_44_56PM_c8e3a462-014c-43ca-8dc0-4d076c4f2840.png?v=1771609594" },
+      { id: "d5", name: "32 oz Black Round Microwave Containers – 150 Set", price: 52, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_44_56PM_400f22ee-9bbe-4e17-81f9-a5c9f008dad9.png?v=1771609614" },
+      { id: "d6", name: "24 oz Salad Bowls with Lids – 150 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_34_22PM.png?v=1771608884" },
+      { id: "d7", name: "32 oz Salad Bowls with Lids – 150 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_34_22PM.png?v=1771608884" },
     ]
   },
   bags: {
     title: "🗑️ Garbage Bags",
     items: [
-      { id: "g1", name: "13 Gallon Kitchen Trash Bags – 200 Count", price: 38 },
-      { id: "g2", name: "30 Gallon Trash Bags – 100 Count", price: 32 },
-      { id: "g3", name: "46 Gallon Heavy Duty Bags – 100 Count", price: 38 },
-      { id: "g4", name: "55 Gallon Contractor Bags – 100 Count", price: 42 },
+      { id: "g1", name: "13 Gallon Kitchen Trash Bags – 200 Count", price: 45, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804" },
+      { id: "g2", name: "30 Gallon Trash Bags – 100 Count", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804" },
+      { id: "g3", name: "46 Gallon Heavy Duty Bags – 100 Count", price: 38, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804" },
+      { id: "g4", name: "55 Gallon Contractor Bags – 100 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804" },
     ]
   },
   wrap: {
     title: "🎁 Plastic Wrap & Foil Sheets",
     items: [
-      { id: "w1", name: "12\" Plastic Food Wrap Roll – 2,000 ft", price: 38 },
-      { id: "w2", name: "18\" Plastic Food Wrap Roll – 2,000 ft", price: 45 },
-      { id: "w3", name: "Pop-Up Foil Sheets 12x10.75\" – 300 Count", price: 32 },
+      { id: "w1", name: "12\" Plastic Food Wrap Roll – 2,000 ft", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Duck12Image1.jpg?v=1771613680" },
+      { id: "w2", name: "18\" Plastic Food Wrap Roll – 2,000 ft", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Duck18Image2.jpg?v=1771613661" },
+      { id: "w3", name: "Pop-Up Foil Sheets 12x10.75\" – 300 Count", price: 18, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/RhinoPopupImage5.jpg?v=1771613730" },
     ]
   }
 };
@@ -680,6 +689,7 @@ function openCategory(key) {
   const list = document.getElementById('products-list');
   list.innerHTML = cat.items.map(p => `
     <div class="product-item${getQty(p.id) > 0 ? ' in-cart' : ''}" id="prod-${p.id}">
+      ${p.img ? `<img class="product-thumb" src="${p.img}" alt="${p.name}" loading="lazy">` : ''}
       <div class="product-info">
         <div class="product-name">${p.name}</div>
         <div class="product-price">$${p.price.toFixed(2)}</div>
