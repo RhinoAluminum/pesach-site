@@ -342,6 +342,44 @@
     font-size: 0.85rem;
   }
 
+  /* ===== CUSTOMER FORM ===== */
+  .customer-form {
+    display: none;
+    padding: 0 16px 8px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .customer-form.visible { display: block; }
+  .customer-form-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin: 14px 0 10px;
+  }
+  .customer-form input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+  .customer-form input::placeholder { color: rgba(255,255,255,0.4); }
+  .customer-form input:focus { border-color: var(--gold); }
+  .customer-form input[type="date"] { color-scheme: dark; }
+  .customer-form-note {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
   /* ===== CHECKOUT BUTTON ===== */
   .checkout-wrap {
     padding: 16px;
@@ -694,6 +732,18 @@
         <span class="cart-total-value" id="cart-grand">$0.00</span>
       </div>
     </div>
+    <div class="customer-form" id="customer-form">
+      <div class="customer-form-title">📦 Shipping Details</div>
+      <input type="text" id="cust-name" placeholder="Full Name *" />
+      <input type="email" id="cust-email" placeholder="Email Address *" />
+      <input type="tel" id="cust-phone" placeholder="Phone Number *" />
+      <input type="text" id="cust-street" placeholder="Street Address *" />
+      <input type="text" id="cust-city" placeholder="City *" />
+      <input type="text" id="cust-state" placeholder="State (e.g. FL) *" />
+      <input type="text" id="cust-zip" placeholder="ZIP Code *" />
+      <input type="date" id="cust-date" placeholder="Requested Ship Date *" />
+      <div class="customer-form-note">📅 Select the date you want your order shipped — we'll do our best to match it via UPS.</div>
+    </div>
     <div class="checkout-wrap">
       <button class="checkout-btn" id="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
     </div>
@@ -897,8 +947,10 @@ function updateCartSummary() {
   if (totalItems === 0) {
     cartItems.innerHTML = '<div class="empty-cart">No items yet. Go shop! 🛒</div>';
     document.getElementById('checkout-btn').disabled = true;
+    document.getElementById('customer-form').classList.remove('visible');
   } else {
     document.getElementById('checkout-btn').disabled = false;
+    document.getElementById('customer-form').classList.add('visible');
     cartItems.innerHTML = Object.entries(cart).map(([id, qty]) => {
       const p = getProductById(id);
       if (!p) return '';
@@ -925,12 +977,28 @@ async function checkout() {
   const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
   if (totalItems === 0) return;
 
+  // Gather customer info
+  const name    = document.getElementById('cust-name').value.trim();
+  const email   = document.getElementById('cust-email').value.trim();
+  const phone   = document.getElementById('cust-phone').value.trim();
+  const street  = document.getElementById('cust-street').value.trim();
+  const city    = document.getElementById('cust-city').value.trim();
+  const state   = document.getElementById('cust-state').value.trim();
+  const zip     = document.getElementById('cust-zip').value.trim();
+  const shipDate = document.getElementById('cust-date').value;
+
+  if (!name || !email || !phone || !street || !city || !state || !zip || !shipDate) {
+    alert('Please fill in all shipping details before continuing.');
+    return;
+  }
+
   let subtotal = 0;
   for (const [id, qty] of Object.entries(cart)) {
     const p = getProductById(id);
     if (p) subtotal += p.price * qty;
   }
-  const total = subtotal;
+  const shipping = totalItems * 5;
+  const total = subtotal + shipping;
 
   const btn = document.getElementById('checkout-btn');
   btn.disabled = true;
@@ -946,7 +1014,7 @@ async function checkout() {
     const data = await response.json();
 
     if (data.payment_link && data.payment_link.url) {
-      submitOrder(total);
+      submitOrder(total, { name, email, phone, street, city, state, zip, shipDate });
       window.location.href = data.payment_link.url;
     } else {
       console.error('Square error:', data);
@@ -962,13 +1030,8 @@ async function checkout() {
   }
 }
 
-function submitOrder(total) {
+function submitOrder(total, cust) {
   const ids = Object.keys(cart);
-  if (!total) total = 0;
-  for (const [id, qty] of Object.entries(cart)) {
-    const p = getProductById(id);
-    if (p) total += p.price * qty;
-  }
 
   let itemsText = '';
   ids.forEach(id => {
@@ -985,12 +1048,14 @@ function submitOrder(total) {
     orderNumber: 'PESACH-' + Date.now(),
     orderDate: new Date().toISOString(),
     orderStatus: 'awaiting_shipment',
-    billTo: { name: 'Bulk Order', street1: 'TBD', city: 'TBD', state: 'NY', postalCode: '00000', country: 'US' },
-    shipTo: { name: 'Bulk Order', street1: 'TBD', city: 'TBD', state: 'NY', postalCode: '00000', country: 'US' },
+    customerEmail: cust.email,
+    billTo: { name: cust.name, street1: cust.street, city: cust.city, state: cust.state, postalCode: cust.zip, country: 'US', phone: cust.phone },
+    shipTo:  { name: cust.name, street1: cust.street, city: cust.city, state: cust.state, postalCode: cust.zip, country: 'US', phone: cust.phone },
     items: ssItems,
     amountPaid: total,
     taxAmount: 0,
-    shippingAmount: 0
+    shippingAmount: Object.values(cart).reduce((a,b)=>a+b,0) * 5,
+    internalNotes: 'Requested ship date: ' + cust.shipDate
   };
 
   const ssAuth = btoa('342c5a334ec940b8a6c94c462ca1145b:05a53637fbaa4595883eecd020f52910');
@@ -1003,12 +1068,12 @@ function submitOrder(total) {
 
   if (typeof emailjs !== 'undefined') {
     emailjs.send('service_wjcd686', 'template_q10q4mr', {
-      customer_name: 'Bulk Order',
-      customer_phone: 'N/A',
-      customer_email: 'N/A',
-      customer_address: 'TBD',
-      customer_city: 'TBD',
-      ship_date: 'Not specified',
+      customer_name: cust.name,
+      customer_phone: cust.phone,
+      customer_email: cust.email,
+      customer_address: cust.street + ', ' + cust.city + ', ' + cust.state + ' ' + cust.zip,
+      customer_city: cust.city,
+      ship_date: cust.shipDate,
       order_items: itemsText,
       order_total: '$' + total.toFixed(2)
     }).catch(err => console.error('Email error:', err));
