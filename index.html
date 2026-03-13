@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rhino Aluminum – Pesach Bulk 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #091f4a;
@@ -55,33 +55,66 @@
     object-fit: contain;
     filter: drop-shadow(0 2px 8px rgba(201,168,76,0.35));
   }
-  .header-sub {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-top: 6px;
-    position: relative;
-  }
-  .header-shipping {
-    font-size: 0.6rem;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 1px;
-    margin-top: 5px;
-    position: relative;
-  }
-  .header-tag {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    color: var(--navy);
-    font-size: 0.65rem;
+  /* ===== BANNER TEXT ===== */
+  .banner-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.55rem, 6.5vw, 3rem);
     font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-top: 10px;
-    position: relative;
+    color: #ffffff;
+    margin-top: 40px;
+    margin-bottom: 18px;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .banner-product {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.05rem, 4.2vw, 1.875rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 22px;
+    line-height: 1.3;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .banner-action {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.9rem, 3.5vw, 1.5rem);
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 26px;
+    line-height: 1.3;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .banner-shipping-strip {
+    display: inline-block;
+    background: #F2C94C;
+    color: #0a1628;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.9rem, 3.5vw, 1.375rem);
+    font-weight: 700;
+    text-align: center;
+    padding: 12px 22px;
+    margin-bottom: 12px;
+    letter-spacing: 0;
+    border-radius: 4px;
+  }
+  .banner-shipping-wrap {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .banner-instruction {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.8rem, 3vw, 1.25rem);
+    font-weight: 500;
+    color: rgba(255,255,255,0.92);
+    text-align: center;
+    letter-spacing: 0.005em;
+    padding: 0 16px 20px;
+    line-height: 1.4;
   }
 
   /* ===== MAIN WRAPPER ===== */
@@ -604,10 +637,11 @@
 
 <div class="header">
   <div class="header-logo"><img src="data:image/avif;base64,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" alt="Rhino Aluminum"></div>
-  <div class="header-sub">Pesach 2026</div>
-  <div class="header-tag">Bulk Disposable Plastic, Paper &amp; Aluminum Foil Supplies</div>
-  <div class="header-shipping">📦 Flat $5.00 Per Unit Shipping via UPS</div>
-  <div class="header-shipping">🗓️ Select the Exact Day You Want It Shipped</div>
+  <div class="banner-headline">Traveling to Orlando for Pesach?</div>
+  <div class="banner-product">Bulk Disposable Plastic &amp; Aluminum Supplies</div>
+  <div class="banner-action">Order Now and Schedule Your Delivery</div>
+  <div class="banner-shipping-wrap"><span class="banner-shipping-strip">UPS Shipping: 3–5 Days</span></div>
+  <div class="banner-instruction">Choose Your Shipment Date at Checkout</div>
 </div>
 
 <div class="container">
@@ -1058,9 +1092,10 @@ function submitOrder(total, cust) {
     internalNotes: 'Requested ship date: ' + cust.shipDate
   };
 
-  fetch('/.netlify/functions/create-order', {
+  const ssAuth = btoa('342c5a334ec940b8a6c94c462ca1145b:05a53637fbaa4595883eecd020f52910');
+  fetch('https://ssapi.shipstation.com/orders/createorder', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Basic ' + ssAuth },
     body: JSON.stringify(ssOrder)
   }).then(r => r.json()).then(d => console.log('ShipStation order:', d.orderId || d))
     .catch(err => console.error('ShipStation error:', err));
