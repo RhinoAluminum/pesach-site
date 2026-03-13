@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhino Aluminum – Pesach Bulk 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- EmailJS loaded early in <head> so it's always ready before checkout -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init('k8O1Y6eneHrNDLJrZ');
+</script>
+
+<style>
+  :root {
+    --navy: #091f4a;
+    --navy-mid: #0d2f6e;
+    --navy-light: #1a4a9c;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --white: #ffffff;
+    --off-white: #f5f6fa;
+    --text-muted: #8a9bc0;
+    --card-radius: 16px;
+    --shadow: 0 8px 32px rgba(9,31,74,0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, #060f2a 0%, var(--navy) 60%, #0a2860 100%);
+    padding: 28px 20px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid rgba(201,168,76,0.3);
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+  }
+  .header-logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header-logo img {
+    height: 72px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(201,168,76,0.35));
+  }
+  .banner-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.55rem, 6.5vw, 3rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 40px;
+    margin-bottom: 18px;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .banner-product {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.05rem, 4.2vw, 1.875rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 22px;
+    line-height: 1.3;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .banner-action {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.9rem, 3.5vw, 1.5rem);
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 26px;
+    line-height: 1.3;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .banner-shipping-strip {
+    display: inline-block;
+    background: #F2C94C;
+    color: #0a1628;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.9rem, 3.5vw, 1.375rem);
+    font-weight: 700;
+    text-align: center;
+    padding: 12px 22px;
+    margin-bottom: 12px;
+    letter-spacing: 0;
+    border-radius: 4px;
+  }
+  .banner-shipping-wrap {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  .banner-instruction {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.8rem, 3vw, 1.25rem);
+    font-weight: 500;
+    color: rgba(255,255,255,0.92);
+    text-align: center;
+    letter-spacing: 0.005em;
+    padding: 0 16px 20px;
+    line-height: 1.4;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 0 100px;
+  }
+
+  .cart-bar {
+    background: rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .cart-bar strong { color: var(--white); font-size: 0.95rem; }
+
+  .categories { padding: 20px 16px 0; }
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .category-card {
+    position: relative;
+    height: 120px;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow);
+  }
+  .category-card:active { transform: scale(0.98); }
+  .category-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s;
+  }
+  .category-card:hover .category-bg { transform: scale(1.04); }
+  .category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(6,15,42,0.92) 0%, rgba(6,15,42,0.5) 60%, rgba(6,15,42,0.1) 100%);
+  }
+  .category-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+    gap: 16px;
+  }
+  .category-emoji { font-size: 2rem; flex-shrink: 0; }
+  .category-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .category-desc { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+  .category-arrow {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 1.1rem;
+    opacity: 0.7;
+  }
+  .category-card.active .category-overlay {
+    background: linear-gradient(to right, rgba(201,168,76,0.25) 0%, rgba(6,15,42,0.5) 60%, rgba(6,15,42,0.1) 100%);
+  }
+  .category-card.active .category-arrow { opacity: 1; }
+  .category-card.active { border: 1.5px solid rgba(201,168,76,0.5); }
+
+  .products-section { padding: 20px 16px 0; display: none; }
+  .products-section.visible { display: block; }
+  .products-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .products-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+  .back-btn {
+    font-size: 0.72rem;
+    cursor: pointer;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    color: var(--gold);
+  }
+
+  .product-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.2s;
+  }
+  .product-item.in-cart { border-color: rgba(201,168,76,0.4); }
+  .product-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    display: block;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .product-thumb:active { opacity: 0.75; }
+  .thumb-wrap { position: relative; flex-shrink: 0; }
+  .thumb-multi-badge {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    background: rgba(9,31,74,0.82);
+    color: var(--gold);
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 6px;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+  }
+  .product-info { flex: 1; min-width: 0; }
+  .product-name { font-size: 0.85rem; font-weight: 600; color: var(--white); line-height: 1.3; }
+  .product-price { font-size: 0.8rem; color: var(--gold); margin-top: 2px; font-weight: 500; }
+  .qty-control { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .qty-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .qty-btn:active { transform: scale(0.9); background: rgba(201,168,76,0.2); }
+  .qty-display { font-size: 0.95rem; font-weight: 700; min-width: 22px; text-align: center; color: var(--white); }
+  .qty-display.has-qty { color: var(--gold); }
+
+  .cart-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+  }
+  .cart-item-name { color: var(--white); flex: 1; }
+  .cart-item-qty { color: var(--text-muted); margin: 0 10px; }
+  .cart-item-price { color: var(--gold); font-weight: 600; }
+  .cart-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 12px 0; }
+  .cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 14px;
+    font-size: 0.85rem;
+  }
+  .cart-total-label { color: var(--text-muted); }
+  .cart-total-value { color: var(--white); font-weight: 600; }
+  .cart-total-row.grand { margin-top: 4px; }
+  .cart-total-row.grand .cart-total-label {
+    color: var(--white);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  .cart-total-row.grand .cart-total-value { color: var(--gold); font-size: 1.2rem; }
+  .empty-cart { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85rem; }
+
+  .customer-form { display: none; padding: 0 16px 8px; border-top: 1px solid rgba(255,255,255,0.08); }
+  .customer-form.visible { display: block; }
+  .customer-form-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin: 14px 0 10px;
+  }
+  .customer-form input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+  .customer-form input::placeholder { color: rgba(255,255,255,0.4); }
+  .customer-form input:focus { border-color: var(--gold); }
+  .customer-form input[type="date"] { color-scheme: dark; }
+  input[type="date"]:not([value]):not(:focus) { color: rgba(255,255,255,0.4); }
+  input[type="date"]#cust-date:before { content: attr(placeholder); color: rgba(255,255,255,0.4); pointer-events: none; }
+  input[type="date"]#cust-date:focus:before, input[type="date"]#cust-date:valid:before { display: none; }
+
+  .checkout-wrap { padding: 16px; }
+  .checkout-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--navy);
+    border: none;
+    border-radius: 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+  }
+  .checkout-btn:active { transform: scale(0.98); }
+  .checkout-btn:disabled {
+    background: rgba(255,255,255,0.1);
+    color: var(--text-muted);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 480px;
+    margin: 0 auto;
+    background: rgba(6,15,42,0.97);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+  }
+  .nav-btn {
+    flex: 1;
+    padding: 14px 8px 10px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+  }
+  .nav-btn.active { color: var(--gold); }
+  .nav-btn svg { width: 20px; height: 20px; }
+  .nav-badge {
+    position: absolute;
+    top: 8px;
+    right: calc(50% - 18px);
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.6rem;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-btn-wrap { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+  .footer { text-align: center; padding: 20px; font-size: 0.72rem; color: var(--text-muted); }
+  .footer a { color: var(--gold); text-decoration: none; }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    touch-action: pan-y;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+    opacity: 0.8;
+  }
+  .lightbox-close:active { opacity: 1; }
+  .lightbox-title {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    right: 50px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .lightbox-img-wrap {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px 0 20px;
+  }
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    user-select: none;
+  }
+  .lightbox-img.fading { opacity: 0; }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+  .lightbox-nav:active { background: rgba(201,168,76,0.3); }
+  .lightbox-nav.prev { left: 12px; }
+  .lightbox-nav.next { right: 12px; }
+  .lightbox-nav:disabled { opacity: 0.2; pointer-events: none; }
+  .lightbox-dots { display: flex; gap: 7px; margin-top: 8px; }
+  .lightbox-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .lightbox-dot.active { background: var(--gold); transform: scale(1.3); }
+  .lightbox-counter { margin-top: 10px; font-size: 0.72rem; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo"><img src="data:image/avif;base64,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" alt="Rhino Aluminum"></div>
+  <div class="banner-headline">Traveling to Orlando for Pesach?</div>
+  <div class="banner-product">Bulk Disposable Plastic &amp; Aluminum Supplies</div>
+  <div class="banner-action">Order Now and Schedule Your Delivery</div>
+  <div class="banner-shipping-wrap"><span class="banner-shipping-strip">UPS Shipping: 3–5 Days &bull; $5.00 Per Unit</span></div>
+  <div class="banner-instruction">Choose Your Shipment Date at Checkout</div>
+</div>
+
+<div class="container">
+
+  <!-- PAGE: SHOP -->
+  <div class="page active" id="page-shop">
+    <div class="cart-bar">
+      <span>Browse by category</span>
+      <span id="cart-summary-text">0 items · $0.00</span>
+    </div>
+
+    <div class="categories" id="categories-view">
+      <div class="section-label">Shop Categories</div>
+      <div class="category-card" onclick="openCategory('plates')">
+        <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Disposable_Kitchenware.webp')"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <div class="category-emoji">🍽️</div>
+          <div class="category-text">
+            <div class="category-title">Plates & Cutlery</div>
+            <div class="category-desc">Plastic plates, forks, knives & spoons</div>
+          </div>
+        </div>
+        <div class="category-arrow">›</div>
+      </div>
+      <div class="category-card" onclick="openCategory('cups')">
+        <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Clear_Plastic_Cups_3b464ca8-339e-45d3-a470-8bf87a1ef65c.webp')"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <div class="category-emoji">🥤</div>
+          <div class="category-text">
+            <div class="category-title">Cups & Lids</div>
+            <div class="category-desc">Clear plastic cups with lids, all sizes</div>
+          </div>
+        </div>
+        <div class="category-arrow">›</div>
+      </div>
+      <div class="category-card" onclick="openCategory('pans')">
+        <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Half_Size_Aluminum_Pans.webp')"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <div class="category-emoji">🫕</div>
+          <div class="category-text">
+            <div class="category-title">Aluminum Pans & Foil</div>
+            <div class="category-desc">Half, full, round & square pans + foil</div>
+          </div>
+        </div>
+        <div class="category-arrow">›</div>
+      </div>
+      <div class="category-card" onclick="openCategory('containers')">
+        <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Plastic_Salad_Bowls.webp')"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <div class="category-emoji">🥗</div>
+          <div class="category-text">
+            <div class="category-title">Containers & Bowls</div>
+            <div class="category-desc">Deli containers, salad bowls & more</div>
+          </div>
+        </div>
+        <div class="category-arrow">›</div>
+      </div>
+      <div class="category-card" onclick="openCategory('bags')">
+        <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Garbage_Bags.webp')"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <div class="category-emoji">🗑️</div>
+          <div class="category-text">
+            <div class="category-title">Garbage Bags</div>
+            <div class="category-desc">13, 30, 42 & 55 gallon heavy duty</div>
+          </div>
+        </div>
+        <div class="category-arrow">›</div>
+      </div>
+      <div class="category-card" onclick="openCategory('wrap')">
+        <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/4.webp')"></div>
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <div class="category-emoji">🌯</div>
+          <div class="category-text">
+            <div class="category-title">Plastic Wrap & Foil Sheets</div>
+            <div class="category-desc">Food wrap rolls & pop-up foil sheets</div>
+          </div>
+        </div>
+        <div class="category-arrow">›</div>
+      </div>
+    </div>
+
+    <div class="products-section" id="products-view">
+      <div class="products-header">
+        <div class="products-title" id="products-title">Products</div>
+        <button class="back-btn" onclick="closeCategory()">← All Categories</button>
+      </div>
+      <div id="products-list"></div>
+    </div>
+  </div>
+
+  <!-- PAGE: CART -->
+  <div class="page" id="page-cart">
+    <div style="padding: 20px 16px 0;">
+      <div class="cart-title">🛒 Your Order</div>
+      <div id="cart-items"></div>
+      <div class="cart-divider"></div>
+      <div class="cart-total-row">
+        <span class="cart-total-label">Subtotal</span>
+        <span class="cart-total-value" id="cart-subtotal">$0.00</span>
+      </div>
+      <div class="cart-total-row">
+        <span class="cart-total-label">Shipping ($5 / item)</span>
+        <span class="cart-total-value" id="cart-shipping">$0.00</span>
+      </div>
+      <div class="cart-total-row grand">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-value" id="cart-grand">$0.00</span>
+      </div>
+    </div>
+    <div class="customer-form" id="customer-form">
+      <div class="customer-form-title">📦 Shipping Details</div>
+      <input type="text" id="cust-name" placeholder="Full Name *" />
+      <input type="email" id="cust-email" placeholder="Email Address *" />
+      <input type="tel" id="cust-phone" placeholder="Phone Number *" />
+      <input type="text" id="cust-street" placeholder="Street Address *" />
+      <input type="text" id="cust-city" placeholder="City *" />
+      <input type="text" id="cust-state" placeholder="State (e.g. FL) *" />
+      <input type="text" id="cust-zip" placeholder="ZIP Code *" />
+      <div style="position:relative;">
+        <input type="date" id="cust-date" required
+          style="width:100%; padding:12px 14px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:rgba(255,255,255,0.4); font-size:0.9rem; font-family:'Inter',sans-serif; outline:none; box-sizing:border-box; color-scheme:dark; margin-bottom:0;" />
+        <span id="cust-date-placeholder" style="position:absolute; left:14px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.4); font-size:0.9rem; font-family:'Inter',sans-serif; pointer-events:none;">Select Your Requested Ship Date *</span>
+      </div>
+      <div style="font-family:'Inter',sans-serif; font-size:0.72rem; color:rgba(255,255,255,0.45); margin-bottom:10px; padding-left:4px; margin-top:5px;">📦 Expect 3–5 Days Shipping via UPS</div>
+    </div>
+    <div class="checkout-wrap">
+      <button class="checkout-btn" id="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+    <div class="footer">
+      📧 <a href="/cdn-cgi/l/email-protection#2569404a65774d4c4b4a644950484c4b50480b464a48"><span class="__cf_email__" data-cfemail="3579505a75675d5c5b5a745940585c5b40581b565a58">[email&#160;protected]</span></a>
+    </div>
+  </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="lightboxBgClick(event)">
+  <div class="lightbox-title" id="lightbox-title"></div>
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <div class="lightbox-img-wrap" id="lightbox-img-wrap">
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  </div>
+  <button class="lightbox-nav prev" id="lb-prev" onclick="lightboxNav(-1)">‹</button>
+  <button class="lightbox-nav next" id="lb-next" onclick="lightboxNav(1)">›</button>
+  <div class="lightbox-dots" id="lightbox-dots"></div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <button class="nav-btn active" id="nav-shop" onclick="switchPage('shop')">
+    <div class="nav-btn-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Shop
+    </div>
+  </button>
+  <button class="nav-btn" id="nav-cart" onclick="switchPage('cart')">
+    <div class="nav-btn-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span id="cart-badge-label">Cart</span>
+      <div class="nav-badge" id="cart-badge" style="display:none">0</div>
+    </div>
+  </button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const PRODUCTS = {
+  plates: {
+    title: "🍽️ Plates & Cutlery",
+    items: [
+      { id: "p1", name: "9\" Plastic Plates – 400 Count", price: 39, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p2", name: "7\" Plastic Plates – 400 Count", price: 28, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p3", name: "Heavy Duty Plastic Forks – 1,000 Count", price: 31, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p4", name: "Heavy Duty Plastic Knives – 1,000 Count", price: 31, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p5", name: "Heavy Duty Plastic Soup Spoons – 1,000 Count", price: 31, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p6", name: "Heavy Duty Plastic Teaspoons – 1,000 Count", price: 31, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+      { id: "p7", name: "12 oz Plastic Bowls – 300 Count", price: 29, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/71EsuBNtX9L._AC_SL1500__1.jpg?v=1773285651" },
+      { id: "p8", name: "12 oz Biodegradable Bowls – 1,000 Count", price: 68, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Disposable_Kitchenware.webp" },
+    ]
+  },
+  cups: {
+    title: "🥤 Cups & Lids",
+    items: [
+      { id: "c1", name: "7 oz Translucent Cups – 1,200 Count", price: 34, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/51HK25Ee5EL._AC_SL1200_5123589e-2ffa-4543-9627-c7cf95184acf.jpg?v=1771607739" },
+      { id: "c2", name: "9 oz Clear Plastic Cups – 400 Count", price: 33, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/51HK25Ee5EL._AC_SL1200.jpg?v=1771607710" },
+      { id: "c3", name: "16 oz Clear Cups with Lids – 200 Count", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_17_32PM_9c4c5370-0bb9-413b-85cb-94b7b8e1273c.png?v=1771607890" },
+      { id: "c4", name: "24 oz Clear Cups with Lids – 100 Count", price: 21, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_05_12PM_0acec859-48d2-43aa-a035-5c3bc466530f.png?v=1771607173" },
+      { id: "c5", name: "12 oz Iced Coffee Cups with Lids – 200 Count", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_17_32PM_f3300999-18ea-48c1-a192-423960a9b3eb.png?v=1771607923" },
+    ]
+  },
+  pans: {
+    title: "🫕 Aluminum Pans & Foil",
+    items: [
+      { id: "a1", name: "Half Size Aluminum Pans Shallow 1.25\" – 50 Count", price: 27, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a2", name: "Half Size Aluminum Pans Medium 2.25\" – 50 Count", price: 27, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a3", name: "Full Size Aluminum Pans – 50 Count", price: 48, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a4", name: "Round Aluminum Pans – 50 Count", price: 27, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a5", name: "Square Aluminum Pans – 50 Count", price: 27, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Half_Size_Aluminum_Pans.webp" },
+      { id: "a6", name: "1 lb Oblong Takeout Pans – 500 Count", price: 65, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/1lbOblongPan1.png?v=1771611894" },
+      { id: "a7", name: "12\" Heavy Duty Aluminum Foil Roll – 350 sq ft", price: 30, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/12RhinoImage4.jpg?v=1771614143" },
+      { id: "a8", name: "18\" Heavy Duty Aluminum Foil Roll – 525 sq ft", price: 55, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/18RhinoImage1.jpg?v=1771614314" },
+      { id: "a9", name: "Aluminum Pop-Up Foil Sheets – 300 Count", price: 18, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/RhinoPopupImage5.jpg?v=1771613730" },
+    ]
+  },
+  containers: {
+    title: "📦 Containers & Bowls",
+    items: [
+      { id: "d1", name: "8 oz Deli Containers with Lids – 200 Count", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373" },
+      { id: "d2", name: "16 oz Deli Containers with Lids – 200 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373" },
+      { id: "d3", name: "32 oz Deli Containers with Lids – 200 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373" },
+      { id: "d4", name: "24 oz Black Round Microwave Containers – 150 Set", price: 52, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_44_56PM_c8e3a462-014c-43ca-8dc0-4d076c4f2840.png?v=1771609594" },
+      { id: "d5", name: "32 oz Black Round Microwave Containers – 150 Set", price: 52, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_44_56PM_400f22ee-9bbe-4e17-81f9-a5c9f008dad9.png?v=1771609614" },
+      { id: "d6", name: "24 oz Salad Bowls with Lids – 150 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_34_22PM.png?v=1771608884" },
+      { id: "d7", name: "32 oz Salad Bowls with Lids – 150 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_34_22PM.png?v=1771608884" },
+    ]
+  },
+  bags: {
+    title: "🗑️ Garbage Bags",
+    items: [
+      { id: "g1", name: "13 Gallon Kitchen Trash Bags – 200 Count", price: 45, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804" },
+      { id: "g2", name: "30 Gallon Trash Bags – 100 Count", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804" },
+      { id: "g3", name: "46 Gallon Heavy Duty Bags – 100 Count", price: 38, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804" },
+      { id: "g4", name: "55 Gallon Contractor Bags – 100 Count", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804" },
+    ]
+  },
+  wrap: {
+    title: "🎁 Plastic Wrap & Foil Sheets",
+    items: [
+      { id: "w1", name: "12\" Plastic Food Wrap Roll – 2,000 ft", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Duck12Image1.jpg?v=1771613680" },
+      { id: "w2", name: "18\" Plastic Food Wrap Roll – 2,000 ft", price: 42, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/Duck18Image2.jpg?v=1771613661" },
+      { id: "w3", name: "Pop-Up Foil Sheets 12x10.75\" – 300 Count", price: 18, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/RhinoPopupImage5.jpg?v=1771613730" },
+    ]
+  }
+};
+
+let cart = {};
+let currentCategory = null;
+
+function getProductById(id) {
+  for (const cat of Object.values(PRODUCTS)) {
+    const item = cat.items.find(p => p.id === id);
+    if (item) return item;
+  }
+  return null;
+}
+
+function getQty(id) { return cart[id] || 0; }
+
+function updateQty(id, delta) {
+  const current = getQty(id);
+  const newQty = Math.max(0, current + delta);
+  if (newQty === 0) delete cart[id];
+  else cart[id] = newQty;
+  renderProductItem(id);
+  updateCartSummary();
+}
+
+function renderProductItem(id) {
+  const qty = getQty(id);
+  const el = document.getElementById('prod-' + id);
+  if (!el) return;
+  el.querySelector('.qty-display').textContent = qty;
+  el.querySelector('.qty-display').className = 'qty-display' + (qty > 0 ? ' has-qty' : '');
+  el.className = 'product-item' + (qty > 0 ? ' in-cart' : '');
+}
+
+function openCategory(key) {
+  currentCategory = key;
+  const cat = PRODUCTS[key];
+  document.getElementById('products-title').textContent = cat.title;
+  const list = document.getElementById('products-list');
+  list.innerHTML = cat.items.map(p => {
+    const imgs = p.imgs || (p.img ? [p.img] : []);
+    const thumbHtml = imgs.length > 0 ? `
+      <div class="thumb-wrap" onclick="openLightbox('${p.id}', 0)">
+        <img class="product-thumb" src="${imgs[0]}" alt="${p.name}" loading="lazy">
+        ${imgs.length > 1 ? `<div class="thumb-multi-badge">+${imgs.length - 1} more</div>` : ''}
+      </div>` : '';
+    return `
+    <div class="product-item${getQty(p.id) > 0 ? ' in-cart' : ''}" id="prod-${p.id}">
+      ${thumbHtml}
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">$${p.price.toFixed(2)}</div>
+      </div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="updateQty('${p.id}',-1)">−</button>
+        <span class="qty-display${getQty(p.id) > 0 ? ' has-qty' : ''}">${getQty(p.id)}</span>
+        <button class="qty-btn" onclick="updateQty('${p.id}',1)">+</button>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('categories-view').style.display = 'none';
+  document.getElementById('products-view').classList.add('visible');
+}
+
+function closeCategory() {
+  currentCategory = null;
+  document.getElementById('categories-view').style.display = 'block';
+  document.getElementById('products-view').classList.remove('visible');
+}
+
+function updateCartSummary() {
+  const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
+  let subtotal = 0;
+  for (const [id, qty] of Object.entries(cart)) {
+    const p = getProductById(id);
+    if (p) subtotal += p.price * qty;
+  }
+  const shipping = totalItems * 5;
+  const grand = subtotal + shipping;
+
+  document.getElementById('cart-summary-text').textContent =
+    `${totalItems} item${totalItems !== 1 ? 's' : ''} · $${subtotal.toFixed(2)}`;
+
+  const badge = document.getElementById('cart-badge');
+  if (totalItems > 0) {
+    badge.style.display = 'flex';
+    badge.textContent = totalItems;
+  } else {
+    badge.style.display = 'none';
+  }
+
+  const cartItems = document.getElementById('cart-items');
+  if (totalItems === 0) {
+    cartItems.innerHTML = '<div class="empty-cart">No items yet. Go shop! 🛒</div>';
+    document.getElementById('checkout-btn').disabled = true;
+    document.getElementById('customer-form').classList.remove('visible');
+  } else {
+    document.getElementById('checkout-btn').disabled = false;
+    document.getElementById('customer-form').classList.add('visible');
+    cartItems.innerHTML = Object.entries(cart).map(([id, qty]) => {
+      const p = getProductById(id);
+      if (!p) return '';
+      return `<div class="cart-item">
+        <span class="cart-item-name">${p.name}</span>
+        <span class="cart-item-qty">×${qty}</span>
+        <span class="cart-item-price">$${(p.price * qty).toFixed(2)}</span>
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('cart-subtotal').textContent = '$' + subtotal.toFixed(2);
+  document.getElementById('cart-shipping').textContent = '$' + shipping.toFixed(2);
+  document.getElementById('cart-grand').textContent = '$' + grand.toFixed(2);
+}
+
+function switchPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+}
+
+async function checkout() {
+  const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
+  if (totalItems === 0) return;
+
+  const name     = document.getElementById('cust-name').value.trim();
+  const email    = document.getElementById('cust-email').value.trim();
+  const phone    = document.getElementById('cust-phone').value.trim();
+  const street   = document.getElementById('cust-street').value.trim();
+  const city     = document.getElementById('cust-city').value.trim();
+  const state    = document.getElementById('cust-state').value.trim();
+  const zip      = document.getElementById('cust-zip').value.trim();
+  const shipDate = document.getElementById('cust-date').value;
+
+  if (!name || !email || !phone || !street || !city || !state || !zip || !shipDate) {
+    alert('Please fill in all shipping details before continuing.');
+    return;
+  }
+
+  let subtotal = 0;
+  for (const [id, qty] of Object.entries(cart)) {
+    const p = getProductById(id);
+    if (p) subtotal += p.price * qty;
+  }
+  const shipping = totalItems * 5;
+  const total = subtotal + shipping;
+
+  const btn = document.getElementById('checkout-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Preparing checkout...';
+
+  try {
+    const response = await fetch('/.netlify/functions/create-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: total.toFixed(2) })
+    });
+
+    const data = await response.json();
+
+    if (data.payment_link && data.payment_link.url) {
+      await submitOrder(total, { name, email, phone, street, city, state, zip, shipDate });
+      window.location.href = data.payment_link.url;
+    } else {
+      console.error('Square error:', data);
+      alert('Could not create payment link. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Proceed to Checkout';
+    }
+  } catch (err) {
+    console.error('Square API error:', err);
+    alert('Payment error. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Proceed to Checkout';
+  }
+}
+
+async function submitOrder(total, cust) {
+  const ids = Object.keys(cart);
+
+  // Build plain-text itemized list for the email body
+  let itemsText = '';
+  ids.forEach(id => {
+    const p = getProductById(id);
+    if (p) itemsText += `• ${p.name}  x${cart[id]}  =  $${(p.price * cart[id]).toFixed(2)}\n`;
+  });
+
+  // ── ShipStation ──────────────────────────────────────────────
+  const ssItems = ids.map(id => {
+    const p = getProductById(id);
+    return p ? { name: p.name, quantity: cart[id], unitPrice: p.price } : null;
+  }).filter(Boolean);
+
+  const ssOrder = {
+    orderNumber: 'PESACH-' + Date.now(),
+    orderDate: new Date().toISOString(),
+    orderStatus: 'awaiting_shipment',
+    customerEmail: cust.email,
+    billTo: { name: cust.name, street1: cust.street, city: cust.city, state: cust.state, postalCode: cust.zip, country: 'US', phone: cust.phone },
+    shipTo:  { name: cust.name, street1: cust.street, city: cust.city, state: cust.state, postalCode: cust.zip, country: 'US', phone: cust.phone },
+    items: ssItems,
+    amountPaid: total,
+    taxAmount: 0,
+    shippingAmount: Object.values(cart).reduce((a,b)=>a+b,0) * 5,
+    internalNotes: 'Requested ship date: ' + cust.shipDate
+  };
+
+  const ssAuth = btoa('342c5a334ec940b8a6c94c462ca1145b:05a53637fbaa4595883eecd020f52910');
+  try {
+    const ssRes = await fetch('https://ssapi.shipstation.com/orders/createorder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Basic ' + ssAuth },
+      body: JSON.stringify(ssOrder)
+    });
+    const ssData = await ssRes.json();
+    console.log('ShipStation order created:', ssData.orderId || ssData);
+  } catch (err) {
+    console.error('ShipStation error:', err);
+  }
+
+  // ── EmailJS ───────────────────────────────────────────────────
+  // Sends order confirmation to Leo@RhinoAluminum.com.
+  //
+  // IMPORTANT — in your EmailJS template (template_q10q4mr), make sure:
+  //   "To Email" field is set to:  {{to_email}}
+  //   Subject line example:        New Pesach Order from {{customer_name}}
+  //   Body variables available:
+  //     {{customer_name}}  {{customer_email}}  {{customer_phone}}
+  //     {{customer_address}}  {{ship_date}}  {{order_items}}  {{order_total}}
+  //
+  try {
+    const emailResult = await emailjs.send(
+      'service_wjcd686',
+      'template_lzqptws',
+      {
+        to_email:         'Leo@RhinoAluminum.com',
+        customer_name:    cust.name,
+        customer_email:   cust.email,
+        customer_phone:   cust.phone,
+        customer_address: cust.street + ', ' + cust.city + ', ' + cust.state + ' ' + cust.zip,
+        ship_date:        cust.shipDate,
+        order_items:      itemsText,
+        order_total:      '$' + total.toFixed(2)
+      }
+    );
+    console.log('✅ Order confirmation email sent:', emailResult.status, emailResult.text);
+  } catch (err) {
+    console.error('❌ EmailJS send failed:', err);
+  }
+}
+
+// Hide date placeholder when a date is picked
+document.getElementById('cust-date').addEventListener('change', function() {
+  const ph = document.getElementById('cust-date-placeholder');
+  if (ph) ph.style.display = this.value ? 'none' : 'block';
+});
+
+// ===== LIGHTBOX =====
+let lbImages = [];
+let lbIndex = 0;
+let lbTouchStartX = 0;
+
+function openLightbox(productId, startIndex) {
+  const p = getProductById(productId);
+  if (!p) return;
+  lbImages = p.imgs || (p.img ? [p.img] : []);
+  if (lbImages.length === 0) return;
+  lbIndex = startIndex || 0;
+  document.getElementById('lightbox-title').textContent = p.name;
+  const lb = document.getElementById('lightbox');
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderLightboxImage();
+  setupLightboxSwipe();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lightboxBgClick(e) {
+  if (e.target === document.getElementById('lightbox') || e.target === document.getElementById('lightbox-img-wrap')) {
+    closeLightbox();
+  }
+}
+
+function renderLightboxImage() {
+  const img = document.getElementById('lightbox-img');
+  img.classList.add('fading');
+  setTimeout(() => {
+    img.src = lbImages[lbIndex];
+    img.onload = () => img.classList.remove('fading');
+    img.onerror = () => img.classList.remove('fading');
+  }, 150);
+  document.getElementById('lb-prev').disabled = lbIndex === 0;
+  document.getElementById('lb-next').disabled = lbIndex === lbImages.length - 1;
+  document.getElementById('lightbox-counter').textContent = lbImages.length > 1 ? `${lbIndex + 1} / ${lbImages.length}` : '';
+  const dotsEl = document.getElementById('lightbox-dots');
+  dotsEl.innerHTML = lbImages.length > 1
+    ? lbImages.map((_, i) => `<div class="lightbox-dot${i === lbIndex ? ' active' : ''}"></div>`).join('')
+    : '';
+}
+
+function lightboxNav(dir) {
+  const newIndex = lbIndex + dir;
+  if (newIndex < 0 || newIndex >= lbImages.length) return;
+  lbIndex = newIndex;
+  renderLightboxImage();
+}
+
+function setupLightboxSwipe() {
+  const wrap = document.getElementById('lightbox-img-wrap');
+  wrap.ontouchstart = (e) => { lbTouchStartX = e.touches[0].clientX; };
+  wrap.ontouchend = (e) => {
+    const dx = e.changedTouches[0].clientX - lbTouchStartX;
+    if (Math.abs(dx) > 40) lightboxNav(dx < 0 ? 1 : -1);
+  };
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lightboxNav(-1);
+  if (e.key === 'ArrowRight') lightboxNav(1);
+});
+
+// Add multi-image data to products
+(function addImages() {
+  const S = 'https://rhinoaluminum.com/cdn/shop/files/';
+  const imgMap = {
+    p1: [ S+'9inchPlate2.jpg?v=1771604627', S+'9inchplate1.png?v=1771604627', S+'9inchplate3.jpg?v=1770892586', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782' ],
+    p2: [ S+'71ITTZ4JeHL._AC_SL1500.jpg?v=1773285142', S+'81gQUzTC4aL._AC_SL1500.jpg?v=1773285142', S+'71ZJRKdaXAL._AC_SL1500_79dd9674-9b5c-4eaa-be34-8d3458715f3b.jpg?v=1773285142', S+'61npUmt0xJL._AC_SL1500_73fa0e06-a376-48a8-a900-f81f50332e14.jpg?v=1773285142' ],
+    p3: [ S+'ChatGPTImageFeb20_2026_11_34_36AM.png?v=1771605296', S+'HDForks.png?v=1771605296', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    p4: [ S+'ChatGPTImageFeb20_2026_11_59_22AM.png?v=1771606782', S+'HDKNives.png?v=1771606782', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    p5: [ S+'ChatGPTImageFeb20_2026_11_51_14AM.png?v=1771606299', S+'HDSoupspoons.png?v=1771606299', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    p6: [ S+'ChatGPTImageFeb20_2026_11_55_28AM.png?v=1771606548', S+'HDTeaspoons.png?v=1771606548', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    p7: [ S+'71EsuBNtX9L._AC_SL1500__1.jpg?v=1773285651', S+'71HC-hPrEcL._AC_SL1500.jpg?v=1773285651', S+'917SwqaeBnL._AC_SL1500.jpg?v=1773285643' ],
+    p8: [ S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    c1: [ S+'ChatGPTImageFeb20_2026_11_26_54AM_71f08dfb-a9c2-44c1-8fbe-3ea238306f1c.png?v=1771605073', S+'7ozcups.png?v=1771605073', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    c2: [ S+'ChatGPTImageFeb20_2026_11_26_54AM.png?v=1771605052', S+'9ozcups.png?v=1771605052', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    c3: [ S+'ChatGPTImageFeb20_2026_12_17_32PM_9c4c5370-0bb9-413b-85cb-94b7b8e1273c.png?v=1771607890', S+'Product7Main.png?v=1771607890', S+'All1.png?v=1771607923', S+'All2.png?v=1771607923', S+'All3.png?v=1771607923' ],
+    c4: [ S+'ChatGPTImageFeb20_2026_12_05_12PM_0acec859-48d2-43aa-a035-5c3bc466530f.png?v=1771607173', S+'Product9Main.png?v=1771607173', S+'All1.png?v=1771607923', S+'All2.png?v=1771607923', S+'All3.png?v=1771607923' ],
+    c5: [ S+'ChatGPTImageFeb20_2026_12_17_32PM_f3300999-18ea-48c1-a192-423960a9b3eb.png?v=1771607923', S+'Product5Main.png?v=1771607923', S+'All1.png?v=1771607923', S+'All2.png?v=1771607923', S+'All3.png?v=1771607923' ],
+    a1: [ S+'HalfSizeGenericImage1.png?v=1771613392', S+'HalfSizeShallow.png?v=1771613392', S+'HalfSizeGeneric2.jpg?v=1771613392', S+'HalfSizeGeneric3.jpg?v=1771613392', S+'HalfSizeGeneric4.png?v=1771613392' ],
+    a2: [ S+'HalfSizeGenericImage1_2933cec3-8a84-421c-962c-cdcd94a9e1ae.png?v=1771613375', S+'HalfSizeMedium2.25.png?v=1771613375', S+'HalfSizeGeneric2_c5016d79-237c-4581-a010-63a3de925580.jpg?v=1770989588', S+'HalfSizeGeneric3_16562182-76ba-412a-89c1-b93717a21cdc.jpg?v=1770989588', S+'HalfSizeGeneric4_d57ce8d3-a40a-4ee1-8661-6828e18123c8.png?v=1770989588' ],
+    a3: [ S+'ChatGPTImageFeb20_2026_01_47_27PM_111fe7c3-3fca-4f9e-ba06-f7aec0bbf399.png?v=1771613334', S+'FullSizeShallow.png?v=1771613334', S+'FullSizeGeneric1.png?v=1771613334', S+'FullSizeGeneric2.png?v=1771613334', S+'FullSizeGeneric3.png?v=1771613334' ],
+    a4: [ S+'AluminumtraywithRhinologo.png?v=1771612026', S+'SquarePanGeneric1.png?v=1771612256', S+'SquarepanGeneric2.png?v=1771612256', S+'SquarePanGeneric3.png?v=1771612256' ],
+    a5: [ S+'AluminumtraywithRhinologo.png?v=1771612026', S+'SquarePan9inch.png?v=1771612026', S+'SquarePanGeneric1.png?v=1771612256', S+'SquarepanGeneric2.png?v=1771612256', S+'SquarePanGeneric3.png?v=1771612256' ],
+    a6: [ S+'OblongGeneric2.jpg?v=1771611894', S+'1lbOblongPan1.png?v=1771611894', S+'OblongGeneric1.png?v=1771611894', S+'OblongGeneric3.png?v=1770278498', S+'OblongGeneric4.jpg?v=1770278498' ],
+    a7: [ S+'12RhinoImage4.jpg?v=1771614143', S+'12RhinoImage3.png?v=1771614143', S+'12RhinoImage1.png?v=1771614143', S+'12RhinoImage2.jpg?v=1771614143', S+'12RhinoImage5.png?v=1770273864' ],
+    a8: [ S+'18RhinoImage1.jpg?v=1771614314', S+'18Rhinoimage2.jpg?v=1771614314', S+'18RhinoImage3.jpg?v=1771614314', S+'18RhinoImage4.jpg?v=1771614314', S+'18rhinoImage5.png?v=1771614314' ],
+    a9: [ S+'RhinoPopupImage5.jpg?v=1771613730', S+'RhinoPopupImage7.png?v=1771613730', S+'RhinoPopupImage1.jpg?v=1771613730', S+'RhinoPopupImage2.jpg?v=1771613730', S+'RhinoPopupImage3.png?v=1771613730' ],
+    d1: [ S+'ChatGPTImageFeb20_2026_01_18_15PM.png?v=1771611516', S+'8ozimage1.png?v=1771611516', S+'GenericDeli1.jpg?v=1771611516', S+'GenericDeli2.jpg?v=1771611516', S+'GenericDeli3.jpg?v=1771611516' ],
+    d2: [ S+'ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373', S+'16ozImage1.png?v=1771611373', S+'GenericDeli1.jpg?v=1771611516', S+'GenericDeli2.jpg?v=1771611516', S+'GenericDeli3.jpg?v=1771611516' ],
+    d3: [ S+'ChatGPTImageFeb20_2026_01_13_29PM.png?v=1771611229', S+'32ozImage1.png?v=1771611229', S+'GenericDeli1.jpg?v=1771611516', S+'GenericDeli2.jpg?v=1771611516', S+'GenericDeli3.jpg?v=1771611516' ],
+    d4: [ S+'ChatGPTImageFeb20_2026_12_44_56PM_c8e3a462-014c-43ca-8dc0-4d076c4f2840.png?v=1771609594', S+'24ozRound.png?v=1771609594', S+'Roundgeneric1_3c791583-52eb-42d7-98bc-fa156a53ed5f.png?v=1771609594', S+'Roundgeneric2_b67d61e8-c395-45bc-b060-343a814fab65.png?v=1771609594', S+'Roundgeneric3_0a73f0bb-dd89-4d6f-975a-3f51428df451.png?v=1771609594' ],
+    d5: [ S+'ChatGPTImageFeb20_2026_12_44_56PM_3576f774-e0d4-4ab6-be56-8506fabc9e58.png?v=1771609572', S+'32ozRound.png?v=1771609572', S+'Roundgeneric1_6a0aabdd-7e95-416e-b6b0-7bb18d5bd941.png?v=1771609572', S+'Roundgeneric2_3bd2c7e6-8209-4bca-ae50-2296b6de6a00.png?v=1771609572', S+'Roundgeneric3_7719d80e-c793-402e-a52a-a06b7435065b.png?v=1771609572' ],
+    d6: [ S+'ChatGPTImageFeb20_2026_12_34_22PM.png?v=1771608884', S+'24ozsalad.jpg?v=1771608884', S+'Saladgeneric1.png?v=1771608884', S+'Saladgeneric2.png?v=1771608884', S+'Saladgeneric3.png?v=1771608884' ],
+    d7: [ S+'ChatGPTImageFeb20_2026_12_39_32PM.png?v=1771609191', S+'32ozsalad.png?v=1771609191', S+'Saladgeneric1_a6ff9746-0ca5-441a-b6b7-f6de04413c83.png?v=1771609191', S+'Saladgeneric2_ad0790f8-198d-48b7-ba80-91791f38cccb.png?v=1771609191', S+'Saladgeneric3_8cc2fb49-530a-4a42-9f8b-1a8ada99ac16.png?v=1771609191' ],
+    g1: [ S+'Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804', S+'13gallon.jpg?v=1771611804', S+'Oxgeneric1.jpg?v=1771611804', S+'Oxgeneric2.jpg?v=1771611804', S+'Oxgeneric3.jpg?v=1771611804' ],
+    g2: [ S+'Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804', S+'Oxgeneric1.jpg?v=1771611804', S+'Oxgeneric2.jpg?v=1771611804', S+'Oxgeneric3.jpg?v=1771611804' ],
+    g3: [ S+'Shinyblackgarbagebagonwhite_1cc413c7-bdff-49bc-8469-18ffb9635944.png?v=1771611767', S+'46gallon.jpg?v=1771611767', S+'Oxgeneric1.jpg?v=1771611804', S+'Oxgeneric2.jpg?v=1771611804', S+'Oxgeneric3.jpg?v=1771611804' ],
+    g4: [ S+'Shinyblackgarbagebagonwhite_e5746990-e54b-46eb-a18e-db97068a79aa.png?v=1771611745', S+'55gallon.jpg?v=1771611745', S+'Oxgeneric1.jpg?v=1771611804', S+'Oxgeneric2.jpg?v=1771611804', S+'Oxgeneric3.jpg?v=1771611804' ],
+    w1: [ S+'Duck12Image1.jpg?v=1771613680', S+'Duck12Image2.jpg?v=1771613680', S+'Duck12Image3.jpg?v=1770275869', S+'DuckGenericImageA.jpg?v=1770275875', S+'DuckGenericImageB.jpg?v=1770275879' ],
+    w2: [ S+'Duck18Image2.jpg?v=1771613661', S+'Duck12Image1.jpg?v=1771613680', S+'DuckGenericImageA.jpg?v=1770275875', S+'DuckGenericImageB.jpg?v=1770275879' ],
+    w3: [ S+'RhinoPopupImage5.jpg?v=1771613730', S+'RhinoPopupImage7.png?v=1771613730', S+'RhinoPopupImage1.jpg?v=1771613730', S+'RhinoPopupImage2.jpg?v=1771613730', S+'RhinoPopupImage3.png?v=1771613730' ],
+  };
+  for (
