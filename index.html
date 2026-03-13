@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rhino Aluminum – Pesach Bulk 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- EmailJS loaded early in <head> so it's always ready before checkout -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init('k8O1Y6eneHrNDLJrZ');
+</script>
+
 <style>
   :root {
     --navy: #091f4a;
@@ -55,7 +62,6 @@
     object-fit: contain;
     filter: drop-shadow(0 2px 8px rgba(201,168,76,0.35));
   }
-  /* ===== BANNER TEXT ===== */
   .banner-headline {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(1.55rem, 6.5vw, 3rem);
@@ -117,14 +123,12 @@
     line-height: 1.4;
   }
 
-  /* ===== MAIN WRAPPER ===== */
   .container {
     max-width: 480px;
     margin: 0 auto;
     padding: 0 0 100px;
   }
 
-  /* ===== CART SUMMARY BAR ===== */
   .cart-bar {
     background: rgba(255,255,255,0.05);
     border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -135,15 +139,9 @@
     font-size: 0.8rem;
     color: var(--text-muted);
   }
-  .cart-bar strong {
-    color: var(--white);
-    font-size: 0.95rem;
-  }
+  .cart-bar strong { color: var(--white); font-size: 0.95rem; }
 
-  /* ===== CATEGORY CARDS ===== */
-  .categories {
-    padding: 20px 16px 0;
-  }
+  .categories { padding: 20px 16px 0; }
   .section-label {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1rem;
@@ -163,7 +161,6 @@
     box-shadow: var(--shadow);
   }
   .category-card:active { transform: scale(0.98); }
-
   .category-bg {
     position: absolute;
     inset: 0;
@@ -172,7 +169,6 @@
     transition: transform 0.4s;
   }
   .category-card:hover .category-bg { transform: scale(1.04); }
-
   .category-overlay {
     position: absolute;
     inset: 0;
@@ -187,7 +183,6 @@
     gap: 16px;
   }
   .category-emoji { font-size: 2rem; flex-shrink: 0; }
-  .category-text {}
   .category-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.25rem;
@@ -195,11 +190,7 @@
     color: var(--white);
     line-height: 1;
   }
-  .category-desc {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
+  .category-desc { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
   .category-arrow {
     position: absolute;
     right: 18px;
@@ -215,13 +206,8 @@
   .category-card.active .category-arrow { opacity: 1; }
   .category-card.active { border: 1.5px solid rgba(201,168,76,0.5); }
 
-  /* ===== PRODUCT LIST ===== */
-  .products-section {
-    padding: 20px 16px 0;
-    display: none;
-  }
+  .products-section { padding: 20px 16px 0; display: none; }
   .products-section.visible { display: block; }
-
   .products-header {
     display: flex;
     align-items: center;
@@ -236,7 +222,6 @@
   }
   .back-btn {
     font-size: 0.72rem;
-    color: var(--text-muted);
     cursor: pointer;
     text-decoration: underline;
     background: none;
@@ -256,7 +241,6 @@
     transition: border-color 0.2s;
   }
   .product-item.in-cart { border-color: rgba(201,168,76,0.4); }
-
   .product-thumb {
     width: 60px;
     height: 60px;
@@ -264,28 +248,28 @@
     border-radius: 8px;
     background: rgba(255,255,255,0.05);
     display: block;
+    cursor: pointer;
+    transition: opacity 0.15s;
   }
-
-  .product-info { flex: 1; min-width: 0; }
-  .product-name {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--white);
-    line-height: 1.3;
-  }
-  .product-price {
-    font-size: 0.8rem;
+  .product-thumb:active { opacity: 0.75; }
+  .thumb-wrap { position: relative; flex-shrink: 0; }
+  .thumb-multi-badge {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    background: rgba(9,31,74,0.82);
     color: var(--gold);
-    margin-top: 2px;
-    font-weight: 500;
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 6px;
+    pointer-events: none;
+    letter-spacing: 0.5px;
   }
-
-  .qty-control {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-  }
+  .product-info { flex: 1; min-width: 0; }
+  .product-name { font-size: 0.85rem; font-weight: 600; color: var(--white); line-height: 1.3; }
+  .product-price { font-size: 0.8rem; color: var(--gold); margin-top: 2px; font-weight: 500; }
+  .qty-control { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
   .qty-btn {
     width: 30px;
     height: 30px;
@@ -303,21 +287,8 @@
     line-height: 1;
   }
   .qty-btn:active { transform: scale(0.9); background: rgba(201,168,76,0.2); }
-  .qty-display {
-    font-size: 0.95rem;
-    font-weight: 700;
-    min-width: 22px;
-    text-align: center;
-    color: var(--white);
-  }
+  .qty-display { font-size: 0.95rem; font-weight: 700; min-width: 22px; text-align: center; color: var(--white); }
   .qty-display.has-qty { color: var(--gold); }
-
-  /* ===== CART SECTION ===== */
-  .cart-section {
-    padding: 20px 16px 0;
-    display: none;
-  }
-  .cart-section.visible { display: block; }
 
   .cart-title {
     font-family: 'Bebas Neue', sans-serif;
@@ -339,12 +310,7 @@
   .cart-item-name { color: var(--white); flex: 1; }
   .cart-item-qty { color: var(--text-muted); margin: 0 10px; }
   .cart-item-price { color: var(--gold); font-weight: 600; }
-
-  .cart-divider {
-    height: 1px;
-    background: rgba(255,255,255,0.1);
-    margin: 12px 0;
-  }
+  .cart-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 12px 0; }
   .cart-total-row {
     display: flex;
     justify-content: space-between;
@@ -354,33 +320,17 @@
   }
   .cart-total-label { color: var(--text-muted); }
   .cart-total-value { color: var(--white); font-weight: 600; }
-  .cart-total-row.grand {
-    margin-top: 4px;
-  }
+  .cart-total-row.grand { margin-top: 4px; }
   .cart-total-row.grand .cart-total-label {
     color: var(--white);
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.1rem;
     letter-spacing: 1px;
   }
-  .cart-total-row.grand .cart-total-value {
-    color: var(--gold);
-    font-size: 1.2rem;
-  }
+  .cart-total-row.grand .cart-total-value { color: var(--gold); font-size: 1.2rem; }
+  .empty-cart { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85rem; }
 
-  .empty-cart {
-    text-align: center;
-    padding: 30px;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-  }
-
-  /* ===== CUSTOMER FORM ===== */
-  .customer-form {
-    display: none;
-    padding: 0 16px 8px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
+  .customer-form { display: none; padding: 0 16px 8px; border-top: 1px solid rgba(255,255,255,0.08); }
   .customer-form.visible { display: block; }
   .customer-form-title {
     font-family: 'Bebas Neue', sans-serif;
@@ -406,29 +356,11 @@
   .customer-form input::placeholder { color: rgba(255,255,255,0.4); }
   .customer-form input:focus { border-color: var(--gold); }
   .customer-form input[type="date"] { color-scheme: dark; }
-  input[type="date"]:not([value]):not(:focus) {
-    color: rgba(255,255,255,0.4);
-  }
-  input[type="date"]#cust-date:before {
-    content: attr(placeholder);
-    color: rgba(255,255,255,0.4);
-    pointer-events: none;
-  }
-  input[type="date"]#cust-date:focus:before,
-  input[type="date"]#cust-date:valid:before {
-    display: none;
-  }
-  .customer-form-note {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-bottom: 14px;
-    line-height: 1.5;
-  }
+  input[type="date"]:not([value]):not(:focus) { color: rgba(255,255,255,0.4); }
+  input[type="date"]#cust-date:before { content: attr(placeholder); color: rgba(255,255,255,0.4); pointer-events: none; }
+  input[type="date"]#cust-date:focus:before, input[type="date"]#cust-date:valid:before { display: none; }
 
-  /* ===== CHECKOUT BUTTON ===== */
-  .checkout-wrap {
-    padding: 16px;
-  }
+  .checkout-wrap { padding: 16px; }
   .checkout-btn {
     width: 100%;
     padding: 18px;
@@ -451,7 +383,6 @@
     cursor: not-allowed;
   }
 
-  /* ===== BOTTOM NAV ===== */
   .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -501,43 +432,11 @@
   }
   .nav-btn-wrap { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; }
 
-  /* ===== FOOTER ===== */
-  .footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-  }
+  .footer { text-align: center; padding: 20px; font-size: 0.72rem; color: var(--text-muted); }
   .footer a { color: var(--gold); text-decoration: none; }
 
-  /* ===== PAGE VIEWS ===== */
   .page { display: none; }
   .page.active { display: block; }
-
-  /* ===== PRODUCT THUMB - tappable ===== */
-  .product-thumb {
-    cursor: pointer;
-    transition: opacity 0.15s;
-    position: relative;
-  }
-  .product-thumb:active { opacity: 0.75; }
-  .thumb-wrap {
-    position: relative;
-    flex-shrink: 0;
-  }
-  .thumb-multi-badge {
-    position: absolute;
-    bottom: 3px;
-    right: 3px;
-    background: rgba(9,31,74,0.82);
-    color: var(--gold);
-    font-size: 0.55rem;
-    font-weight: 700;
-    padding: 2px 5px;
-    border-radius: 6px;
-    pointer-events: none;
-    letter-spacing: 0.5px;
-  }
 
   /* ===== LIGHTBOX ===== */
   .lightbox {
@@ -552,7 +451,6 @@
     touch-action: pan-y;
   }
   .lightbox.open { display: flex; }
-
   .lightbox-close {
     position: absolute;
     top: 16px;
@@ -567,7 +465,6 @@
     opacity: 0.8;
   }
   .lightbox-close:active { opacity: 1; }
-
   .lightbox-title {
     position: absolute;
     top: 18px;
@@ -578,7 +475,6 @@
     font-weight: 500;
     line-height: 1.3;
   }
-
   .lightbox-img-wrap {
     width: 100%;
     max-width: 480px;
@@ -598,7 +494,6 @@
     user-select: none;
   }
   .lightbox-img.fading { opacity: 0; }
-
   .lightbox-nav {
     position: absolute;
     top: 50%;
@@ -620,12 +515,7 @@
   .lightbox-nav.prev { left: 12px; }
   .lightbox-nav.next { right: 12px; }
   .lightbox-nav:disabled { opacity: 0.2; pointer-events: none; }
-
-  .lightbox-dots {
-    display: flex;
-    gap: 7px;
-    margin-top: 8px;
-  }
+  .lightbox-dots { display: flex; gap: 7px; margin-top: 8px; }
   .lightbox-dot {
     width: 7px;
     height: 7px;
@@ -633,16 +523,8 @@
     background: rgba(255,255,255,0.3);
     transition: background 0.2s, transform 0.2s;
   }
-  .lightbox-dot.active {
-    background: var(--gold);
-    transform: scale(1.3);
-  }
-
-  .lightbox-counter {
-    margin-top: 10px;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-  }
+  .lightbox-dot.active { background: var(--gold); transform: scale(1.3); }
+  .lightbox-counter { margin-top: 10px; font-size: 0.72rem; color: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -660,7 +542,6 @@
 
   <!-- PAGE: SHOP -->
   <div class="page active" id="page-shop">
-
     <div class="cart-bar">
       <span>Browse by category</span>
       <span id="cart-summary-text">0 items · $0.00</span>
@@ -668,7 +549,6 @@
 
     <div class="categories" id="categories-view">
       <div class="section-label">Shop Categories</div>
-
       <div class="category-card" onclick="openCategory('plates')">
         <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Disposable_Kitchenware.webp')"></div>
         <div class="category-overlay"></div>
@@ -681,7 +561,6 @@
         </div>
         <div class="category-arrow">›</div>
       </div>
-
       <div class="category-card" onclick="openCategory('cups')">
         <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Clear_Plastic_Cups_3b464ca8-339e-45d3-a470-8bf87a1ef65c.webp')"></div>
         <div class="category-overlay"></div>
@@ -694,7 +573,6 @@
         </div>
         <div class="category-arrow">›</div>
       </div>
-
       <div class="category-card" onclick="openCategory('pans')">
         <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Half_Size_Aluminum_Pans.webp')"></div>
         <div class="category-overlay"></div>
@@ -707,7 +585,6 @@
         </div>
         <div class="category-arrow">›</div>
       </div>
-
       <div class="category-card" onclick="openCategory('containers')">
         <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Plastic_Salad_Bowls.webp')"></div>
         <div class="category-overlay"></div>
@@ -720,7 +597,6 @@
         </div>
         <div class="category-arrow">›</div>
       </div>
-
       <div class="category-card" onclick="openCategory('bags')">
         <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/Garbage_Bags.webp')"></div>
         <div class="category-overlay"></div>
@@ -733,7 +609,6 @@
         </div>
         <div class="category-arrow">›</div>
       </div>
-
       <div class="category-card" onclick="openCategory('wrap')">
         <div class="category-bg" style="background-image:url('https://rhinoaluminum.com/cdn/shop/files/4.webp')"></div>
         <div class="category-overlay"></div>
@@ -748,7 +623,6 @@
       </div>
     </div>
 
-    <!-- PRODUCT LISTS per category -->
     <div class="products-section" id="products-view">
       <div class="products-header">
         <div class="products-title" id="products-title">Products</div>
@@ -756,7 +630,6 @@
       </div>
       <div id="products-list"></div>
     </div>
-
   </div>
 
   <!-- PAGE: CART -->
@@ -798,7 +671,7 @@
       <button class="checkout-btn" id="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
     </div>
     <div class="footer">
-      📧 <a href="mailto:Leo@RhinoAluminum.com">Leo@RhinoAluminum.com</a>
+      📧 <a href="/cdn-cgi/l/email-protection#2569404a65774d4c4b4a644950484c4b50480b464a48"><span class="__cf_email__" data-cfemail="3579505a75675d5c5b5a745940585c5b40581b565a58">[email&#160;protected]</span></a>
     </div>
   </div>
 
@@ -904,7 +777,7 @@ const PRODUCTS = {
   }
 };
 
-let cart = {}; // { id: qty }
+let cart = {};
 let currentCategory = null;
 
 function getProductById(id) {
@@ -992,7 +865,6 @@ function updateCartSummary() {
     badge.style.display = 'none';
   }
 
-  // Update cart page
   const cartItems = document.getElementById('cart-items');
   if (totalItems === 0) {
     cartItems.innerHTML = '<div class="empty-cart">No items yet. Go shop! 🛒</div>';
@@ -1027,14 +899,13 @@ async function checkout() {
   const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
   if (totalItems === 0) return;
 
-  // Gather customer info
-  const name    = document.getElementById('cust-name').value.trim();
-  const email   = document.getElementById('cust-email').value.trim();
-  const phone   = document.getElementById('cust-phone').value.trim();
-  const street  = document.getElementById('cust-street').value.trim();
-  const city    = document.getElementById('cust-city').value.trim();
-  const state   = document.getElementById('cust-state').value.trim();
-  const zip     = document.getElementById('cust-zip').value.trim();
+  const name     = document.getElementById('cust-name').value.trim();
+  const email    = document.getElementById('cust-email').value.trim();
+  const phone    = document.getElementById('cust-phone').value.trim();
+  const street   = document.getElementById('cust-street').value.trim();
+  const city     = document.getElementById('cust-city').value.trim();
+  const state    = document.getElementById('cust-state').value.trim();
+  const zip      = document.getElementById('cust-zip').value.trim();
   const shipDate = document.getElementById('cust-date').value;
 
   if (!name || !email || !phone || !street || !city || !state || !zip || !shipDate) {
@@ -1083,12 +954,14 @@ async function checkout() {
 async function submitOrder(total, cust) {
   const ids = Object.keys(cart);
 
+  // Build plain-text itemized list for the email body
   let itemsText = '';
   ids.forEach(id => {
     const p = getProductById(id);
     if (p) itemsText += `• ${p.name}  x${cart[id]}  =  $${(p.price * cart[id]).toFixed(2)}\n`;
   });
 
+  // ── ShipStation ──────────────────────────────────────────────
   const ssItems = ids.map(id => {
     const p = getProductById(id);
     return p ? { name: p.name, quantity: cart[id], unitPrice: p.price } : null;
@@ -1121,17 +994,34 @@ async function submitOrder(total, cust) {
     console.error('ShipStation error:', err);
   }
 
-  if (typeof emailjs !== 'undefined') {
-    emailjs.send('service_wjcd686', 'template_q10q4mr', {
-      customer_name: cust.name,
-      customer_phone: cust.phone,
-      customer_email: cust.email,
-      customer_address: cust.street + ', ' + cust.city + ', ' + cust.state + ' ' + cust.zip,
-      customer_city: cust.city,
-      ship_date: cust.shipDate,
-      order_items: itemsText,
-      order_total: '$' + total.toFixed(2)
-    }).catch(err => console.error('Email error:', err));
+  // ── EmailJS ───────────────────────────────────────────────────
+  // Sends order confirmation to Leo@RhinoAluminum.com.
+  //
+  // IMPORTANT — in your EmailJS template (template_q10q4mr), make sure:
+  //   "To Email" field is set to:  {{to_email}}
+  //   Subject line example:        New Pesach Order from {{customer_name}}
+  //   Body variables available:
+  //     {{customer_name}}  {{customer_email}}  {{customer_phone}}
+  //     {{customer_address}}  {{ship_date}}  {{order_items}}  {{order_total}}
+  //
+  try {
+    const emailResult = await emailjs.send(
+      'service_wjcd686',
+      'template_lzqptws',
+      {
+        to_email:         'Leo@RhinoAluminum.com',
+        customer_name:    cust.name,
+        customer_email:   cust.email,
+        customer_phone:   cust.phone,
+        customer_address: cust.street + ', ' + cust.city + ', ' + cust.state + ' ' + cust.zip,
+        ship_date:        cust.shipDate,
+        order_items:      itemsText,
+        order_total:      '$' + total.toFixed(2)
+      }
+    );
+    console.log('✅ Order confirmation email sent:', emailResult.status, emailResult.text);
+  } catch (err) {
+    console.error('❌ EmailJS send failed:', err);
   }
 }
 
@@ -1179,11 +1069,9 @@ function renderLightboxImage() {
     img.onload = () => img.classList.remove('fading');
     img.onerror = () => img.classList.remove('fading');
   }, 150);
-
   document.getElementById('lb-prev').disabled = lbIndex === 0;
   document.getElementById('lb-next').disabled = lbIndex === lbImages.length - 1;
   document.getElementById('lightbox-counter').textContent = lbImages.length > 1 ? `${lbIndex + 1} / ${lbImages.length}` : '';
-
   const dotsEl = document.getElementById('lightbox-dots');
   dotsEl.innerHTML = lbImages.length > 1
     ? lbImages.map((_, i) => `<div class="lightbox-dot${i === lbIndex ? ' active' : ''}"></div>`).join('')
@@ -1206,284 +1094,51 @@ function setupLightboxSwipe() {
   };
 }
 
-// Close lightbox on Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') lightboxNav(-1);
   if (e.key === 'ArrowRight') lightboxNav(1);
 });
 
-// Add multi-image data to products — images pulled directly from Shopify collections
+// Add multi-image data to products
 (function addImages() {
   const S = 'https://rhinoaluminum.com/cdn/shop/files/';
   const imgMap = {
-    // === PLATES & CUTLERY ===
-    p1: [ // 9" Plastic Plates
-      S+'9inchPlate2.jpg?v=1771604627',
-      S+'9inchplate1.png?v=1771604627',
-      S+'9inchplate3.jpg?v=1770892586',
-      S+'KitchenGeneric1.png?v=1771606782',
-      S+'Kitchengeneric2.png?v=1771606782'
-    ],
-    p2: [ // 7" Plastic Plates
-      S+'71ITTZ4JeHL._AC_SL1500.jpg?v=1773285142',
-      S+'81gQUzTC4aL._AC_SL1500.jpg?v=1773285142',
-      S+'71ZJRKdaXAL._AC_SL1500_79dd9674-9b5c-4eaa-be34-8d3458715f3b.jpg?v=1773285142',
-      S+'61npUmt0xJL._AC_SL1500_73fa0e06-a376-48a8-a900-f81f50332e14.jpg?v=1773285142'
-    ],
-    p3: [ // Forks
-      S+'ChatGPTImageFeb20_2026_11_34_36AM.png?v=1771605296',
-      S+'HDForks.png?v=1771605296',
-      S+'KitchenGeneric1.png?v=1771606782',
-      S+'Kitchengeneric2.png?v=1771606782',
-      S+'Kitchengeneric3.png?v=1771606782'
-    ],
-    p4: [ // Knives
-      S+'ChatGPTImageFeb20_2026_11_59_22AM.png?v=1771606782',
-      S+'HDKNives.png?v=1771606782',
-      S+'KitchenGeneric1.png?v=1771606782',
-      S+'Kitchengeneric2.png?v=1771606782',
-      S+'Kitchengeneric3.png?v=1771606782'
-    ],
-    p5: [ // Soup Spoons
-      S+'ChatGPTImageFeb20_2026_11_51_14AM.png?v=1771606299',
-      S+'HDSoupspoons.png?v=1771606299',
-      S+'KitchenGeneric1.png?v=1771606782',
-      S+'Kitchengeneric2.png?v=1771606782',
-      S+'Kitchengeneric3.png?v=1771606782'
-    ],
-    p6: [ // Teaspoons
-      S+'ChatGPTImageFeb20_2026_11_55_28AM.png?v=1771606548',
-      S+'HDTeaspoons.png?v=1771606548',
-      S+'KitchenGeneric1.png?v=1771606782',
-      S+'Kitchengeneric2.png?v=1771606782',
-      S+'Kitchengeneric3.png?v=1771606782'
-    ],
-    p7: [ // 12 oz Plastic Bowls
-      S+'71EsuBNtX9L._AC_SL1500__1.jpg?v=1773285651',
-      S+'71HC-hPrEcL._AC_SL1500.jpg?v=1773285651',
-      S+'917SwqaeBnL._AC_SL1500.jpg?v=1773285643'
-    ],
-    p8: [ // Biodegradable Bowls — using kitchen generic as placeholder
-      S+'KitchenGeneric1.png?v=1771606782',
-      S+'Kitchengeneric2.png?v=1771606782',
-      S+'Kitchengeneric3.png?v=1771606782'
-    ],
-
-    // === CUPS & LIDS ===
-    c1: [ // 7 oz Translucent
-      S+'ChatGPTImageFeb20_2026_11_26_54AM_71f08dfb-a9c2-44c1-8fbe-3ea238306f1c.png?v=1771605073',
-      S+'7ozcups.png?v=1771605073',
-      S+'KitchenGeneric1.png?v=1771606782',
-      S+'Kitchengeneric2.png?v=1771606782',
-      S+'Kitchengeneric3.png?v=1771606782'
-    ],
-    c2: [ // 9 oz Clear
-      S+'ChatGPTImageFeb20_2026_11_26_54AM.png?v=1771605052',
-      S+'9ozcups.png?v=1771605052',
-      S+'KitchenGeneric1.png?v=1771606782',
-      S+'Kitchengeneric2.png?v=1771606782',
-      S+'Kitchengeneric3.png?v=1771606782'
-    ],
-    c3: [ // 16 oz with Lids
-      S+'ChatGPTImageFeb20_2026_12_17_32PM_9c4c5370-0bb9-413b-85cb-94b7b8e1273c.png?v=1771607890',
-      S+'Product7Main.png?v=1771607890',
-      S+'All1.png?v=1771607923',
-      S+'All2.png?v=1771607923',
-      S+'All3.png?v=1771607923'
-    ],
-    c4: [ // 24 oz with Lids
-      S+'ChatGPTImageFeb20_2026_12_05_12PM_0acec859-48d2-43aa-a035-5c3bc466530f.png?v=1771607173',
-      S+'Product9Main.png?v=1771607173',
-      S+'All1.png?v=1771607923',
-      S+'All2.png?v=1771607923',
-      S+'All3.png?v=1771607923'
-    ],
-    c5: [ // 12 oz Iced Coffee
-      S+'ChatGPTImageFeb20_2026_12_17_32PM_f3300999-18ea-48c1-a192-423960a9b3eb.png?v=1771607923',
-      S+'Product5Main.png?v=1771607923',
-      S+'All1.png?v=1771607923',
-      S+'All2.png?v=1771607923',
-      S+'All3.png?v=1771607923'
-    ],
-
-    // === ALUMINUM PANS & FOIL ===
-    a1: [ // Half Size Shallow
-      S+'HalfSizeGenericImage1.png?v=1771613392',
-      S+'HalfSizeShallow.png?v=1771613392',
-      S+'HalfSizeGeneric2.jpg?v=1771613392',
-      S+'HalfSizeGeneric3.jpg?v=1771613392',
-      S+'HalfSizeGeneric4.png?v=1771613392'
-    ],
-    a2: [ // Half Size Medium
-      S+'HalfSizeGenericImage1_2933cec3-8a84-421c-962c-cdcd94a9e1ae.png?v=1771613375',
-      S+'HalfSizeMedium2.25.png?v=1771613375',
-      S+'HalfSizeGeneric2_c5016d79-237c-4581-a010-63a3de925580.jpg?v=1770989588',
-      S+'HalfSizeGeneric3_16562182-76ba-412a-89c1-b93717a21cdc.jpg?v=1770989588',
-      S+'HalfSizeGeneric4_d57ce8d3-a40a-4ee1-8661-6828e18123c8.png?v=1770989588'
-    ],
-    a3: [ // Full Size Shallow
-      S+'ChatGPTImageFeb20_2026_01_47_27PM_111fe7c3-3fca-4f9e-ba06-f7aec0bbf399.png?v=1771613334',
-      S+'FullSizeShallow.png?v=1771613334',
-      S+'FullSizeGeneric1.png?v=1771613334',
-      S+'FullSizeGeneric2.png?v=1771613334',
-      S+'FullSizeGeneric3.png?v=1771613334'
-    ],
-    a4: [ // Round Pans — using square generic as closest match
-      S+'AluminumtraywithRhinologo.png?v=1771612026',
-      S+'SquarePanGeneric1.png?v=1771612256',
-      S+'SquarepanGeneric2.png?v=1771612256',
-      S+'SquarePanGeneric3.png?v=1771612256'
-    ],
-    a5: [ // Square Pans (9x9)
-      S+'AluminumtraywithRhinologo.png?v=1771612026',
-      S+'SquarePan9inch.png?v=1771612026',
-      S+'SquarePanGeneric1.png?v=1771612256',
-      S+'SquarepanGeneric2.png?v=1771612256',
-      S+'SquarePanGeneric3.png?v=1771612256'
-    ],
-    a6: [ // 1 lb Oblong
-      S+'OblongGeneric2.jpg?v=1771611894',
-      S+'1lbOblongPan1.png?v=1771611894',
-      S+'OblongGeneric1.png?v=1771611894',
-      S+'OblongGeneric3.png?v=1770278498',
-      S+'OblongGeneric4.jpg?v=1770278498'
-    ],
-    a7: [ // 12" Foil Roll
-      S+'12RhinoImage4.jpg?v=1771614143',
-      S+'12RhinoImage3.png?v=1771614143',
-      S+'12RhinoImage1.png?v=1771614143',
-      S+'12RhinoImage2.jpg?v=1771614143',
-      S+'12RhinoImage5.png?v=1770273864'
-    ],
-    a8: [ // 18" Foil Roll
-      S+'18RhinoImage1.jpg?v=1771614314',
-      S+'18Rhinoimage2.jpg?v=1771614314',
-      S+'18RhinoImage3.jpg?v=1771614314',
-      S+'18RhinoImage4.jpg?v=1771614314',
-      S+'18rhinoImage5.png?v=1771614314'
-    ],
-    a9: [ // Pop-Up Foil Sheets
-      S+'RhinoPopupImage5.jpg?v=1771613730',
-      S+'RhinoPopupImage7.png?v=1771613730',
-      S+'RhinoPopupImage1.jpg?v=1771613730',
-      S+'RhinoPopupImage2.jpg?v=1771613730',
-      S+'RhinoPopupImage3.png?v=1771613730'
-    ],
-
-    // === CONTAINERS & BOWLS ===
-    d1: [ // 8 oz Deli
-      S+'ChatGPTImageFeb20_2026_01_18_15PM.png?v=1771611516',
-      S+'8ozimage1.png?v=1771611516',
-      S+'GenericDeli1.jpg?v=1771611516',
-      S+'GenericDeli2.jpg?v=1771611516',
-      S+'GenericDeli3.jpg?v=1771611516'
-    ],
-    d2: [ // 16 oz Deli
-      S+'ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373',
-      S+'16ozImage1.png?v=1771611373',
-      S+'GenericDeli1.jpg?v=1771611516',
-      S+'GenericDeli2.jpg?v=1771611516',
-      S+'GenericDeli3.jpg?v=1771611516'
-    ],
-    d3: [ // 32 oz Deli
-      S+'ChatGPTImageFeb20_2026_01_13_29PM.png?v=1771611229',
-      S+'32ozImage1.png?v=1771611229',
-      S+'GenericDeli1.jpg?v=1771611516',
-      S+'GenericDeli2.jpg?v=1771611516',
-      S+'GenericDeli3.jpg?v=1771611516'
-    ],
-    d4: [ // 24 oz Black Round
-      S+'ChatGPTImageFeb20_2026_12_44_56PM_c8e3a462-014c-43ca-8dc0-4d076c4f2840.png?v=1771609594',
-      S+'24ozRound.png?v=1771609594',
-      S+'Roundgeneric1_3c791583-52eb-42d7-98bc-fa156a53ed5f.png?v=1771609594',
-      S+'Roundgeneric2_b67d61e8-c395-45bc-b060-343a814fab65.png?v=1771609594',
-      S+'Roundgeneric3_0a73f0bb-dd89-4d6f-975a-3f51428df451.png?v=1771609594'
-    ],
-    d5: [ // 32 oz Black Round
-      S+'ChatGPTImageFeb20_2026_12_44_56PM_3576f774-e0d4-4ab6-be56-8506fabc9e58.png?v=1771609572',
-      S+'32ozRound.png?v=1771609572',
-      S+'Roundgeneric1_6a0aabdd-7e95-416e-b6b0-7bb18d5bd941.png?v=1771609572',
-      S+'Roundgeneric2_3bd2c7e6-8209-4bca-ae50-2296b6de6a00.png?v=1771609572',
-      S+'Roundgeneric3_7719d80e-c793-402e-a52a-a06b7435065b.png?v=1771609572'
-    ],
-    d6: [ // 24 oz Salad Bowls
-      S+'ChatGPTImageFeb20_2026_12_34_22PM.png?v=1771608884',
-      S+'24ozsalad.jpg?v=1771608884',
-      S+'Saladgeneric1.png?v=1771608884',
-      S+'Saladgeneric2.png?v=1771608884',
-      S+'Saladgeneric3.png?v=1771608884'
-    ],
-    d7: [ // 32 oz Salad Bowls
-      S+'ChatGPTImageFeb20_2026_12_39_32PM.png?v=1771609191',
-      S+'32ozsalad.png?v=1771609191',
-      S+'Saladgeneric1_a6ff9746-0ca5-441a-b6b7-f6de04413c83.png?v=1771609191',
-      S+'Saladgeneric2_ad0790f8-198d-48b7-ba80-91791f38cccb.png?v=1771609191',
-      S+'Saladgeneric3_8cc2fb49-530a-4a42-9f8b-1a8ada99ac16.png?v=1771609191'
-    ],
-
-    // === GARBAGE BAGS ===
-    g1: [ // 13 Gallon
-      S+'Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804',
-      S+'13gallon.jpg?v=1771611804',
-      S+'Oxgeneric1.jpg?v=1771611804',
-      S+'Oxgeneric2.jpg?v=1771611804',
-      S+'Oxgeneric3.jpg?v=1771611804'
-    ],
-    g2: [ // 30 Gallon
-      S+'Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804',
-      S+'Oxgeneric1.jpg?v=1771611804',
-      S+'Oxgeneric2.jpg?v=1771611804',
-      S+'Oxgeneric3.jpg?v=1771611804'
-    ],
-    g3: [ // 46 Gallon
-      S+'Shinyblackgarbagebagonwhite_1cc413c7-bdff-49bc-8469-18ffb9635944.png?v=1771611767',
-      S+'46gallon.jpg?v=1771611767',
-      S+'Oxgeneric1.jpg?v=1771611804',
-      S+'Oxgeneric2.jpg?v=1771611804',
-      S+'Oxgeneric3.jpg?v=1771611804'
-    ],
-    g4: [ // 55 Gallon
-      S+'Shinyblackgarbagebagonwhite_e5746990-e54b-46eb-a18e-db97068a79aa.png?v=1771611745',
-      S+'55gallon.jpg?v=1771611745',
-      S+'Oxgeneric1.jpg?v=1771611804',
-      S+'Oxgeneric2.jpg?v=1771611804',
-      S+'Oxgeneric3.jpg?v=1771611804'
-    ],
-
-    // === PLASTIC WRAP & FOIL ===
-    w1: [ // 12" Plastic Wrap
-      S+'Duck12Image1.jpg?v=1771613680',
-      S+'Duck12Image2.jpg?v=1771613680',
-      S+'Duck12Image3.jpg?v=1770275869',
-      S+'DuckGenericImageA.jpg?v=1770275875',
-      S+'DuckGenericImageB.jpg?v=1770275879'
-    ],
-    w2: [ // 18" Plastic Wrap — reuse 12" images as placeholder
-      S+'Duck18Image2.jpg?v=1771613661',
-      S+'Duck12Image1.jpg?v=1771613680',
-      S+'DuckGenericImageA.jpg?v=1770275875',
-      S+'DuckGenericImageB.jpg?v=1770275879'
-    ],
-    w3: [ // Pop-Up Foil Sheets
-      S+'RhinoPopupImage5.jpg?v=1771613730',
-      S+'RhinoPopupImage7.png?v=1771613730',
-      S+'RhinoPopupImage1.jpg?v=1771613730',
-      S+'RhinoPopupImage2.jpg?v=1771613730',
-      S+'RhinoPopupImage3.png?v=1771613730'
-    ],
+    p1: [ S+'9inchPlate2.jpg?v=1771604627', S+'9inchplate1.png?v=1771604627', S+'9inchplate3.jpg?v=1770892586', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782' ],
+    p2: [ S+'71ITTZ4JeHL._AC_SL1500.jpg?v=1773285142', S+'81gQUzTC4aL._AC_SL1500.jpg?v=1773285142', S+'71ZJRKdaXAL._AC_SL1500_79dd9674-9b5c-4eaa-be34-8d3458715f3b.jpg?v=1773285142', S+'61npUmt0xJL._AC_SL1500_73fa0e06-a376-48a8-a900-f81f50332e14.jpg?v=1773285142' ],
+    p3: [ S+'ChatGPTImageFeb20_2026_11_34_36AM.png?v=1771605296', S+'HDForks.png?v=1771605296', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    p4: [ S+'ChatGPTImageFeb20_2026_11_59_22AM.png?v=1771606782', S+'HDKNives.png?v=1771606782', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    p5: [ S+'ChatGPTImageFeb20_2026_11_51_14AM.png?v=1771606299', S+'HDSoupspoons.png?v=1771606299', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    p6: [ S+'ChatGPTImageFeb20_2026_11_55_28AM.png?v=1771606548', S+'HDTeaspoons.png?v=1771606548', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    p7: [ S+'71EsuBNtX9L._AC_SL1500__1.jpg?v=1773285651', S+'71HC-hPrEcL._AC_SL1500.jpg?v=1773285651', S+'917SwqaeBnL._AC_SL1500.jpg?v=1773285643' ],
+    p8: [ S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    c1: [ S+'ChatGPTImageFeb20_2026_11_26_54AM_71f08dfb-a9c2-44c1-8fbe-3ea238306f1c.png?v=1771605073', S+'7ozcups.png?v=1771605073', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    c2: [ S+'ChatGPTImageFeb20_2026_11_26_54AM.png?v=1771605052', S+'9ozcups.png?v=1771605052', S+'KitchenGeneric1.png?v=1771606782', S+'Kitchengeneric2.png?v=1771606782', S+'Kitchengeneric3.png?v=1771606782' ],
+    c3: [ S+'ChatGPTImageFeb20_2026_12_17_32PM_9c4c5370-0bb9-413b-85cb-94b7b8e1273c.png?v=1771607890', S+'Product7Main.png?v=1771607890', S+'All1.png?v=1771607923', S+'All2.png?v=1771607923', S+'All3.png?v=1771607923' ],
+    c4: [ S+'ChatGPTImageFeb20_2026_12_05_12PM_0acec859-48d2-43aa-a035-5c3bc466530f.png?v=1771607173', S+'Product9Main.png?v=1771607173', S+'All1.png?v=1771607923', S+'All2.png?v=1771607923', S+'All3.png?v=1771607923' ],
+    c5: [ S+'ChatGPTImageFeb20_2026_12_17_32PM_f3300999-18ea-48c1-a192-423960a9b3eb.png?v=1771607923', S+'Product5Main.png?v=1771607923', S+'All1.png?v=1771607923', S+'All2.png?v=1771607923', S+'All3.png?v=1771607923' ],
+    a1: [ S+'HalfSizeGenericImage1.png?v=1771613392', S+'HalfSizeShallow.png?v=1771613392', S+'HalfSizeGeneric2.jpg?v=1771613392', S+'HalfSizeGeneric3.jpg?v=1771613392', S+'HalfSizeGeneric4.png?v=1771613392' ],
+    a2: [ S+'HalfSizeGenericImage1_2933cec3-8a84-421c-962c-cdcd94a9e1ae.png?v=1771613375', S+'HalfSizeMedium2.25.png?v=1771613375', S+'HalfSizeGeneric2_c5016d79-237c-4581-a010-63a3de925580.jpg?v=1770989588', S+'HalfSizeGeneric3_16562182-76ba-412a-89c1-b93717a21cdc.jpg?v=1770989588', S+'HalfSizeGeneric4_d57ce8d3-a40a-4ee1-8661-6828e18123c8.png?v=1770989588' ],
+    a3: [ S+'ChatGPTImageFeb20_2026_01_47_27PM_111fe7c3-3fca-4f9e-ba06-f7aec0bbf399.png?v=1771613334', S+'FullSizeShallow.png?v=1771613334', S+'FullSizeGeneric1.png?v=1771613334', S+'FullSizeGeneric2.png?v=1771613334', S+'FullSizeGeneric3.png?v=1771613334' ],
+    a4: [ S+'AluminumtraywithRhinologo.png?v=1771612026', S+'SquarePanGeneric1.png?v=1771612256', S+'SquarepanGeneric2.png?v=1771612256', S+'SquarePanGeneric3.png?v=1771612256' ],
+    a5: [ S+'AluminumtraywithRhinologo.png?v=1771612026', S+'SquarePan9inch.png?v=1771612026', S+'SquarePanGeneric1.png?v=1771612256', S+'SquarepanGeneric2.png?v=1771612256', S+'SquarePanGeneric3.png?v=1771612256' ],
+    a6: [ S+'OblongGeneric2.jpg?v=1771611894', S+'1lbOblongPan1.png?v=1771611894', S+'OblongGeneric1.png?v=1771611894', S+'OblongGeneric3.png?v=1770278498', S+'OblongGeneric4.jpg?v=1770278498' ],
+    a7: [ S+'12RhinoImage4.jpg?v=1771614143', S+'12RhinoImage3.png?v=1771614143', S+'12RhinoImage1.png?v=1771614143', S+'12RhinoImage2.jpg?v=1771614143', S+'12RhinoImage5.png?v=1770273864' ],
+    a8: [ S+'18RhinoImage1.jpg?v=1771614314', S+'18Rhinoimage2.jpg?v=1771614314', S+'18RhinoImage3.jpg?v=1771614314', S+'18RhinoImage4.jpg?v=1771614314', S+'18rhinoImage5.png?v=1771614314' ],
+    a9: [ S+'RhinoPopupImage5.jpg?v=1771613730', S+'RhinoPopupImage7.png?v=1771613730', S+'RhinoPopupImage1.jpg?v=1771613730', S+'RhinoPopupImage2.jpg?v=1771613730', S+'RhinoPopupImage3.png?v=1771613730' ],
+    d1: [ S+'ChatGPTImageFeb20_2026_01_18_15PM.png?v=1771611516', S+'8ozimage1.png?v=1771611516', S+'GenericDeli1.jpg?v=1771611516', S+'GenericDeli2.jpg?v=1771611516', S+'GenericDeli3.jpg?v=1771611516' ],
+    d2: [ S+'ChatGPTImageFeb20_2026_01_15_55PM.png?v=1771611373', S+'16ozImage1.png?v=1771611373', S+'GenericDeli1.jpg?v=1771611516', S+'GenericDeli2.jpg?v=1771611516', S+'GenericDeli3.jpg?v=1771611516' ],
+    d3: [ S+'ChatGPTImageFeb20_2026_01_13_29PM.png?v=1771611229', S+'32ozImage1.png?v=1771611229', S+'GenericDeli1.jpg?v=1771611516', S+'GenericDeli2.jpg?v=1771611516', S+'GenericDeli3.jpg?v=1771611516' ],
+    d4: [ S+'ChatGPTImageFeb20_2026_12_44_56PM_c8e3a462-014c-43ca-8dc0-4d076c4f2840.png?v=1771609594', S+'24ozRound.png?v=1771609594', S+'Roundgeneric1_3c791583-52eb-42d7-98bc-fa156a53ed5f.png?v=1771609594', S+'Roundgeneric2_b67d61e8-c395-45bc-b060-343a814fab65.png?v=1771609594', S+'Roundgeneric3_0a73f0bb-dd89-4d6f-975a-3f51428df451.png?v=1771609594' ],
+    d5: [ S+'ChatGPTImageFeb20_2026_12_44_56PM_3576f774-e0d4-4ab6-be56-8506fabc9e58.png?v=1771609572', S+'32ozRound.png?v=1771609572', S+'Roundgeneric1_6a0aabdd-7e95-416e-b6b0-7bb18d5bd941.png?v=1771609572', S+'Roundgeneric2_3bd2c7e6-8209-4bca-ae50-2296b6de6a00.png?v=1771609572', S+'Roundgeneric3_7719d80e-c793-402e-a52a-a06b7435065b.png?v=1771609572' ],
+    d6: [ S+'ChatGPTImageFeb20_2026_12_34_22PM.png?v=1771608884', S+'24ozsalad.jpg?v=1771608884', S+'Saladgeneric1.png?v=1771608884', S+'Saladgeneric2.png?v=1771608884', S+'Saladgeneric3.png?v=1771608884' ],
+    d7: [ S+'ChatGPTImageFeb20_2026_12_39_32PM.png?v=1771609191', S+'32ozsalad.png?v=1771609191', S+'Saladgeneric1_a6ff9746-0ca5-441a-b6b7-f6de04413c83.png?v=1771609191', S+'Saladgeneric2_ad0790f8-198d-48b7-ba80-91791f38cccb.png?v=1771609191', S+'Saladgeneric3_8cc2fb49-530a-4a42-9f8b-1a8ada99ac16.png?v=1771609191' ],
+    g1: [ S+'Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804', S+'13gallon.jpg?v=1771611804', S+'Oxgeneric1.jpg?v=1771611804', S+'Oxgeneric2.jpg?v=1771611804', S+'Oxgeneric3.jpg?v=1771611804' ],
+    g2: [ S+'Shinyblackgarbagebagonwhite_fec952d8-1a68-4809-9237-20a3e31d077f.png?v=1771611804', S+'Oxgeneric1.jpg?v=1771611804', S+'Oxgeneric2.jpg?v=1771611804', S+'Oxgeneric3.jpg?v=1771611804' ],
+    g3: [ S+'Shinyblackgarbagebagonwhite_1cc413c7-bdff-49bc-8469-18ffb9635944.png?v=1771611767', S+'46gallon.jpg?v=1771611767', S+'Oxgeneric1.jpg?v=1771611804', S+'Oxgeneric2.jpg?v=1771611804', S+'Oxgeneric3.jpg?v=1771611804' ],
+    g4: [ S+'Shinyblackgarbagebagonwhite_e5746990-e54b-46eb-a18e-db97068a79aa.png?v=1771611745', S+'55gallon.jpg?v=1771611745', S+'Oxgeneric1.jpg?v=1771611804', S+'Oxgeneric2.jpg?v=1771611804', S+'Oxgeneric3.jpg?v=1771611804' ],
+    w1: [ S+'Duck12Image1.jpg?v=1771613680', S+'Duck12Image2.jpg?v=1771613680', S+'Duck12Image3.jpg?v=1770275869', S+'DuckGenericImageA.jpg?v=1770275875', S+'DuckGenericImageB.jpg?v=1770275879' ],
+    w2: [ S+'Duck18Image2.jpg?v=1771613661', S+'Duck12Image1.jpg?v=1771613680', S+'DuckGenericImageA.jpg?v=1770275875', S+'DuckGenericImageB.jpg?v=1770275879' ],
+    w3: [ S+'RhinoPopupImage5.jpg?v=1771613730', S+'RhinoPopupImage7.png?v=1771613730', S+'RhinoPopupImage1.jpg?v=1771613730', S+'RhinoPopupImage2.jpg?v=1771613730', S+'RhinoPopupImage3.png?v=1771613730' ],
   };
-  for (const cat of Object.values(PRODUCTS)) {
-    for (const item of cat.items) {
-      if (imgMap[item.id]) item.imgs = imgMap[item.id];
-      else item.imgs = item.img ? [item.img] : [];
-    }
-  }
-})();
-
-updateCartSummary();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>emailjs.init('k8O1Y6eneHrNDLJrZ');</script>
-</body>
-</html>
+  for (
