@@ -775,8 +775,11 @@
       <input type="text" id="cust-city" placeholder="City *" />
       <input type="text" id="cust-state" placeholder="State (e.g. FL) *" />
       <input type="text" id="cust-zip" placeholder="ZIP Code *" />
-      <label style="font-family:'Inter',sans-serif; font-size:0.75rem; color:rgba(255,255,255,0.55); display:block; margin-bottom:4px; padding-left:2px;">📅 Select the Date You Want Your Order Shipped — Expect 3–5 Days Shipping</label>
-      <input type="date" id="cust-date" placeholder="Requested Ship Date *" />
+      <div style="position:relative; margin-bottom:10px;">
+        <label for="cust-date" style="font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.75); display:block; margin-bottom:6px; padding-left:2px;">📅 Select Your Requested Ship Date *</label>
+        <div style="font-family:'Inter',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45); margin-bottom:6px; padding-left:2px;">Expect 3–5 Days Shipping via UPS</div>
+        <input type="date" id="cust-date" style="width:100%; padding:12px 14px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#fff; font-size:0.9rem; font-family:'Inter',sans-serif; outline:none; box-sizing:border-box; color-scheme:dark;" />
+      </div>
     </div>
     <div class="checkout-wrap">
       <button class="checkout-btn" id="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
@@ -1048,7 +1051,7 @@ async function checkout() {
     const data = await response.json();
 
     if (data.payment_link && data.payment_link.url) {
-      submitOrder(total, { name, email, phone, street, city, state, zip, shipDate });
+      await submitOrder(total, { name, email, phone, street, city, state, zip, shipDate });
       window.location.href = data.payment_link.url;
     } else {
       console.error('Square error:', data);
@@ -1064,7 +1067,7 @@ async function checkout() {
   }
 }
 
-function submitOrder(total, cust) {
+async function submitOrder(total, cust) {
   const ids = Object.keys(cart);
 
   let itemsText = '';
@@ -1093,12 +1096,17 @@ function submitOrder(total, cust) {
   };
 
   const ssAuth = btoa('342c5a334ec940b8a6c94c462ca1145b:05a53637fbaa4595883eecd020f52910');
-  fetch('https://ssapi.shipstation.com/orders/createorder', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Basic ' + ssAuth },
-    body: JSON.stringify(ssOrder)
-  }).then(r => r.json()).then(d => console.log('ShipStation order:', d.orderId || d))
-    .catch(err => console.error('ShipStation error:', err));
+  try {
+    const ssRes = await fetch('https://ssapi.shipstation.com/orders/createorder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Basic ' + ssAuth },
+      body: JSON.stringify(ssOrder)
+    });
+    const ssData = await ssRes.json();
+    console.log('ShipStation order created:', ssData.orderId || ssData);
+  } catch (err) {
+    console.error('ShipStation error:', err);
+  }
 
   if (typeof emailjs !== 'undefined') {
     emailjs.send('service_wjcd686', 'template_q10q4mr', {
