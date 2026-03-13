@@ -406,6 +406,18 @@
   .customer-form input::placeholder { color: rgba(255,255,255,0.4); }
   .customer-form input:focus { border-color: var(--gold); }
   .customer-form input[type="date"] { color-scheme: dark; }
+  input[type="date"]:not([value]):not(:focus) {
+    color: rgba(255,255,255,0.4);
+  }
+  input[type="date"]#cust-date:before {
+    content: attr(placeholder);
+    color: rgba(255,255,255,0.4);
+    pointer-events: none;
+  }
+  input[type="date"]#cust-date:focus:before,
+  input[type="date"]#cust-date:valid:before {
+    display: none;
+  }
   .customer-form-note {
     font-size: 0.7rem;
     color: var(--text-muted);
@@ -775,17 +787,16 @@
       <input type="text" id="cust-city" placeholder="City *" />
       <input type="text" id="cust-state" placeholder="State (e.g. FL) *" />
       <input type="text" id="cust-zip" placeholder="ZIP Code *" />
-      <div style="position:relative; margin-bottom:10px;">
-        <label for="cust-date" style="font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.75); display:block; margin-bottom:6px; padding-left:2px;">📅 Select Your Requested Ship Date *</label>
-        <div style="font-family:'Inter',sans-serif; font-size:0.7rem; color:rgba(255,255,255,0.45); margin-bottom:6px; padding-left:2px;">Expect 3–5 Days Shipping via UPS</div>
-        <input type="date" id="cust-date" style="width:100%; padding:12px 14px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#fff; font-size:0.9rem; font-family:'Inter',sans-serif; outline:none; box-sizing:border-box; color-scheme:dark;" />
+      <div style="position:relative; margin-bottom:4px;">
+        <input type="date" id="cust-date" placeholder="Select Ship Date *" style="width:100%; padding:12px 14px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:#fff; font-size:0.9rem; font-family:'Inter',sans-serif; outline:none; box-sizing:border-box; color-scheme:dark;" />
       </div>
+      <div style="font-family:'Inter',sans-serif; font-size:0.72rem; color:rgba(255,255,255,0.45); margin-bottom:10px; padding-left:4px;">📦 Expect 3–5 Days Shipping via UPS</div>
     </div>
     <div class="checkout-wrap">
       <button class="checkout-btn" id="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
     </div>
     <div class="footer">
-      📧 <a href="/cdn-cgi/l/email-protection#0f436a604f5d676661604e637a6266617a62216c6062"><span class="__cf_email__" data-cfemail="733f161c33211b1a1d1c321f061e1a1d061e5d101c1e">[email&#160;protected]</span></a> · 🕍 Shomer Shabbos
+      📧 <a href="mailto:Leo@RhinoAluminum.com">Leo@RhinoAluminum.com</a>
     </div>
   </div>
 
