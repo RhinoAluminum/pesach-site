@@ -1067,7 +1067,7 @@ async function checkout() {
     const data = await response.json();
 
     if (data.payment_link && data.payment_link.url) {
-      await submitOrder(total, { name, email, phone, street, city, state, zip, shipDate });
+      
       window.location.href = data.payment_link.url;
     } else {
       console.error('Square error:', data);
