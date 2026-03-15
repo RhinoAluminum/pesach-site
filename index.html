@@ -798,7 +798,7 @@
       <button class="checkout-btn" id="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
     </div>
     <div class="footer">
-      📧 <a href="/cdn-cgi/l/email-protection#571b323817053f3e3938163b223a3e39223a7934383a"><span class="__cf_email__" data-cfemail="ce82aba18e9ca6a7a0a18fa2bba3a7a0bba3e0ada1a3">[email&#160;protected]</span></a>
+      📧 <a href="mailto:Leo@RhinoAluminum.com">Leo@RhinoAluminum.com</a>
     </div>
   </div>
 
@@ -834,7 +834,7 @@
   </button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const PRODUCTS = {
   plates: {
     title: "🍽️ Plates & Cutlery",
@@ -857,9 +857,9 @@ const PRODUCTS = {
       { id: "c3", name: "16 oz Clear Cups with Lids – 200 Count", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_17_32PM_9c4c5370-0bb9-413b-85cb-94b7b8e1273c.png?v=1771607890" },
       { id: "c4", name: "24 oz Clear Cups with Lids – 100 Count", price: 21, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_05_12PM_0acec859-48d2-43aa-a035-5c3bc466530f.png?v=1771607173" },
       { id: "c5", name: "12 oz Iced Coffee Cups with Lids – 200 Count", price: 32, img: "https://cdn.shopify.com/s/files/1/0609/3026/1089/files/ChatGPTImageFeb20_2026_12_17_32PM_f3300999-18ea-48c1-a192-423960a9b3eb.png?v=1771607923" },
-      { id: "c6", name: "12oz White Hot Coffee Cups with Black Dome Lids – 100 Count", price: 22, img: "https://i.imgur.com/dqco2dd.png" },
-      { id: "c7", name: "16oz White Hot Coffee Cups with Black Dome Lids – 100 Count", price: 24, img: "https://i.imgur.com/cqgZxHN.png" },
-      { id: "c8", name: "20oz White Hot Coffee Cups with Black Dome Lids – 100 Count", price: 28, img: "https://i.imgur.com/gIFqDfn.png" },
+      { id: "c6", name: "12oz White Hot Coffee Cups with Black Dome Lids – 100 Count", price: 22, img: "https://i.imgur.com/gIFqDfn.png" },
+      { id: "c7", name: "16oz White Hot Coffee Cups with Black Dome Lids – 100 Count", price: 24, img: "https://i.imgur.com/dqco2dd.png" },
+      { id: "c8", name: "20oz White Hot Coffee Cups with Black Dome Lids – 100 Count", price: 28, img: "https://i.imgur.com/cqgZxHN.png" },
     ]
   },
   pans: {
@@ -1312,19 +1312,19 @@ document.addEventListener('keydown', (e) => {
 
     // === NEW: WHITE HOT COFFEE CUPS ===
     c6: [ // 12oz White Hot Coffee Cups
-      'https://i.imgur.com/dqco2dd.png',
+      'https://i.imgur.com/gIFqDfn.png',
       'https://i.imgur.com/boM6V9Z.png',
       'https://i.imgur.com/p2ALLre.jpeg',
       'https://i.imgur.com/ZJkOzA7.png'
     ],
     c7: [ // 16oz White Hot Coffee Cups
-      'https://i.imgur.com/cqgZxHN.png',
+      'https://i.imgur.com/dqco2dd.png',
       'https://i.imgur.com/boM6V9Z.png',
       'https://i.imgur.com/p2ALLre.jpeg',
       'https://i.imgur.com/ZJkOzA7.png'
     ],
     c8: [ // 20oz White Hot Coffee Cups
-      'https://i.imgur.com/gIFqDfn.png',
+      'https://i.imgur.com/cqgZxHN.png',
       'https://i.imgur.com/boM6V9Z.png',
       'https://i.imgur.com/p2ALLre.jpeg',
       'https://i.imgur.com/ZJkOzA7.png'
@@ -1499,4 +1499,14 @@ document.addEventListener('keydown', (e) => {
   for (const cat of Object.values(PRODUCTS)) {
     for (const item of cat.items) {
       if (imgMap[item.id]) item.imgs = imgMap[item.id];
-      else
+      else item.imgs = item.img ? [item.img] : [];
+    }
+  }
+})();
+
+updateCartSummary();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init('k8O1Y6eneHrNDLJrZ');</script>
+</body>
+</html>
