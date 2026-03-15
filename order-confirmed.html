@@ -29,29 +29,33 @@
 (async function() {
   emailjs.init('k8O1Y6eneHrNDLJrZ');
 
-  const raw = sessionStorage.getItem('o');
-  if (!raw) {
+  const rawCust = sessionStorage.getItem('o');
+  const rawCart = sessionStorage.getItem('c');
+  sessionStorage.removeItem('o');
+  sessionStorage.removeItem('c');
+
+  if (!rawCust) {
     document.getElementById('status-msg').textContent = '✓ Payment confirmed.';
     return;
   }
 
-  const c = JSON.parse(raw);
-  sessionStorage.removeItem('o');
+  const cust = JSON.parse(rawCust);
+  const cartData = rawCart ? JSON.parse(rawCart) : { items: [], total: '0.00', shipping: '0.00' };
 
-  document.getElementById('order-summary').textContent = 'Order for ' + c.n;
+  document.getElementById('order-summary').textContent = 'Order for ' + cust.n + ' · $' + cartData.total;
 
   const ssOrder = {
     orderNumber: 'PESACH-' + Date.now(),
     orderDate: new Date().toISOString(),
     orderStatus: 'awaiting_shipment',
-    customerEmail: c.e,
-    billTo: { name: c.n, street1: c.s, city: c.c, state: c.st, postalCode: c.z, country: 'US', phone: c.ph },
-    shipTo:  { name: c.n, street1: c.s, city: c.c, state: c.st, postalCode: c.z, country: 'US', phone: c.ph },
-    items: [],
-    amountPaid: 0,
+    customerEmail: cust.e,
+    billTo: { name: cust.n, street1: cust.s, city: cust.c, state: cust.st, postalCode: cust.z, country: 'US', phone: cust.ph },
+    shipTo:  { name: cust.n, street1: cust.s, city: cust.c, state: cust.st, postalCode: cust.z, country: 'US', phone: cust.ph },
+    items: cartData.items,
+    amountPaid: parseFloat(cartData.total),
     taxAmount: 0,
-    shippingAmount: 0,
-    internalNotes: 'Requested ship date: ' + c.d
+    shippingAmount: parseFloat(cartData.shipping),
+    internalNotes: 'Requested ship date: ' + cust.d
   };
 
   try {
@@ -65,15 +69,16 @@
     document.getElementById('status-msg').textContent = '✓ Payment confirmed.';
   }
 
+  let itemsText = cartData.items.map(i => '• ' + i.name + '  x' + i.quantity + '  =  $' + (i.unitPrice * i.quantity).toFixed(2)).join('\n');
   emailjs.send('service_wjcd686', 'template_q10q4mr', {
-    customer_name: c.n,
-    customer_phone: c.ph,
-    customer_email: c.e,
-    customer_address: c.s + ', ' + c.c + ', ' + c.st + ' ' + c.z,
-    customer_city: c.c,
-    ship_date: c.d,
-    order_items: 'See Square for order details',
-    order_total: 'See Square for total'
+    customer_name: cust.n,
+    customer_phone: cust.ph,
+    customer_email: cust.e,
+    customer_address: cust.s + ', ' + cust.c + ', ' + cust.st + ' ' + cust.z,
+    customer_city: cust.c,
+    ship_date: cust.d,
+    order_items: itemsText,
+    order_total: '$' + cartData.total
   }).catch(err => console.error('Email error:', err));
 
 })();
