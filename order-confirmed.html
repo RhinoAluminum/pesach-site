@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed – Rhino Aluminum</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body { background: #091f4a; color: #fff; font-family: 'Montserrat', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+  .card { background: rgba(255,255,255,0.07); border-radius: 16px; padding: 40px 30px; max-width: 480px; width: 100%; text-align: center; }
+  .icon { font-size: 4rem; margin-bottom: 16px; }
+  h1 { font-size: 1.6rem; color: #F2C94C; margin-bottom: 12px; }
+  p { color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 10px; }
+  .btn { display: inline-block; margin-top: 24px; background: #F2C94C; color: #091f4a; font-weight: 700; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 1rem; }
+  .status { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">✅</div>
+  <h1>Payment Received!</h1>
+  <p>Thank you for your order. We're processing it now and will be in touch shortly with shipping details.</p>
+  <p id="order-summary"></p>
+  <a href="https://rhinoaluminum.netlify.app" class="btn">Back to Shop</a>
+  <div class="status" id="status-msg">Processing your order...</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+(async function() {
+  emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('order');
+  if (!raw) {
+    document.getElementById('status-msg').textContent = '';
+    return;
+  }
+
+  let orderData;
+  try {
+    orderData = JSON.parse(decodeURIComponent(raw));
+  } catch(e) {
+    document.getElementById('status-msg').textContent = '';
+    return;
+  }
+
+  const { cust, items, total, shipping } = orderData;
+
+  document.getElementById('order-summary').textContent =
+    `Order for ${cust.name} · $${parseFloat(total).toFixed(2)}`;
+
+  const ssItems = items.map(i => ({ name: i.name, quantity: i.quantity, unitPrice: i.unitPrice }));
+  const ssOrder = {
+    orderNumber: 'PESACH-' + Date.now(),
+    orderDate: new Date().toISOString(),
+    orderStatus: 'awaiting_shipment',
+    customerEmail: cust.email,
+    billTo: { name: cust.name, street1: cust.street, city: cust.city, state: cust.state, postalCode: cust.zip, country: 'US', phone: cust.phone },
+    shipTo:  { name: cust.name, street1: cust.street, city: cust.city, state: cust.state, postalCode: cust.zip, country: 'US', phone: cust.phone },
+    items: ssItems,
+    amountPaid: total,
+    taxAmount: 0,
+    shippingAmount: shipping,
+    internalNotes: 'Requested ship date: ' + cust.shipDate
+  };
+
+  try {
+    await fetch('/.netlify/functions/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(ssOrder)
+    });
+    document.getElementById('status-msg').textContent = '✓ Order submitted successfully.';
+  } catch(e) {
+    document.getElementById('status-msg').textContent = '';
+  }
+
+  let itemsText = items.map(i => `• ${i.name}  x${i.quantity}  =  $${(i.unitPrice * i.quantity).toFixed(2)}`).join('\n');
+  emailjs.send('service_wjcd686', 'template_q10q4mr', {
+    customer_name: cust.name,
+    customer_phone: cust.phone,
+    customer_email: cust.email,
+    customer_address: cust.street + ', ' + cust.city + ', ' + cust.state + ' ' + cust.zip,
+    customer_city: cust.city,
+    ship_date: cust.shipDate,
+    order_items: itemsText,
+    order_total: '$' + parseFloat(total).toFixed(2)
+  }).catch(err => console.error('Email error:', err));
+
+})();
+</script>
+</body>
+</html>
