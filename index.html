@@ -1067,7 +1067,9 @@ async function checkout() {
     const data = await response.json();
 
     if (data.payment_link && data.payment_link.url) {
-     sessionStorage.setItem('o', JSON.stringify({n:name,e:email,ph:phone,s:street,c:city,st:state,z:zip,d:shipDate})); 
+     sessionStorage.setItem('o', JSON.stringify({n:name,e:email,ph:phone,s:street,c:city,st:state,z:zip,d:shipDate}));
+      sessionStorage.setItem('c', JSON.stringify({items:Object.keys(cart).map(id=>{const p=getProductById(id);return p?
+    {name:p.name,quantity:cart[id],unitPrice:p.price}:null}).filter(Boolean),total:(subtotal+shipping).toFixed(2),shipping:shipping.toFixed(2)}));    
       window.location.href = data.payment_link.url;
     } else {
       console.error('Square error:', data);
