@@ -8,7 +8,7 @@ exports.handler = async function(event) {
 
   // Store orderData as a note in the payment link
   const orderNote = encodeURIComponent(JSON.stringify(orderData));
-  const redirectUrl = `https://pesach.rhinoaluminum.com/order-confirmed.html?order=${orderNote}`;
+  const redirectUrl = `https://rhinoaluminum.netlify.app/order-confirmed.html?order=${orderNote}`;
 
   const response = await fetch('https://connect.squareup.com/v2/online-checkout/payment-links', {
     method: 'POST',
