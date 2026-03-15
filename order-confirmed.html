@@ -24,45 +24,34 @@
   <a href="https://rhinoaluminum.netlify.app" class="btn">Back to Shop</a>
   <div class="status" id="status-msg">Processing your order...</div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
 (async function() {
-  emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+  emailjs.init('k8O1Y6eneHrNDLJrZ');
 
-  const params = new URLSearchParams(window.location.search);
-  const raw = params.get('order');
+  const raw = sessionStorage.getItem('o');
   if (!raw) {
-    document.getElementById('status-msg').textContent = '';
+    document.getElementById('status-msg').textContent = '✓ Payment confirmed.';
     return;
   }
 
-  let orderData;
-  try {
-    orderData = JSON.parse(decodeURIComponent(raw));
-  } catch(e) {
-    document.getElementById('status-msg').textContent = '';
-    return;
-  }
+  const c = JSON.parse(raw);
+  sessionStorage.removeItem('o');
 
-  const { cust, items, total, shipping } = orderData;
+  document.getElementById('order-summary').textContent = 'Order for ' + c.n;
 
-  document.getElementById('order-summary').textContent =
-    `Order for ${cust.name} · $${parseFloat(total).toFixed(2)}`;
-
-  const ssItems = items.map(i => ({ name: i.name, quantity: i.quantity, unitPrice: i.unitPrice }));
   const ssOrder = {
     orderNumber: 'PESACH-' + Date.now(),
     orderDate: new Date().toISOString(),
     orderStatus: 'awaiting_shipment',
-    customerEmail: cust.email,
-    billTo: { name: cust.name, street1: cust.street, city: cust.city, state: cust.state, postalCode: cust.zip, country: 'US', phone: cust.phone },
-    shipTo:  { name: cust.name, street1: cust.street, city: cust.city, state: cust.state, postalCode: cust.zip, country: 'US', phone: cust.phone },
-    items: ssItems,
-    amountPaid: total,
+    customerEmail: c.e,
+    billTo: { name: c.n, street1: c.s, city: c.c, state: c.st, postalCode: c.z, country: 'US', phone: c.ph },
+    shipTo:  { name: c.n, street1: c.s, city: c.c, state: c.st, postalCode: c.z, country: 'US', phone: c.ph },
+    items: [],
+    amountPaid: 0,
     taxAmount: 0,
-    shippingAmount: shipping,
-    internalNotes: 'Requested ship date: ' + cust.shipDate
+    shippingAmount: 0,
+    internalNotes: 'Requested ship date: ' + c.d
   };
 
   try {
@@ -71,21 +60,20 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(ssOrder)
     });
-    document.getElementById('status-msg').textContent = '✓ Order submitted successfully.';
+    document.getElementById('status-msg').textContent = '✓ Order submitted.';
   } catch(e) {
-    document.getElementById('status-msg').textContent = '';
+    document.getElementById('status-msg').textContent = '✓ Payment confirmed.';
   }
 
-  let itemsText = items.map(i => `• ${i.name}  x${i.quantity}  =  $${(i.unitPrice * i.quantity).toFixed(2)}`).join('\n');
   emailjs.send('service_wjcd686', 'template_q10q4mr', {
-    customer_name: cust.name,
-    customer_phone: cust.phone,
-    customer_email: cust.email,
-    customer_address: cust.street + ', ' + cust.city + ', ' + cust.state + ' ' + cust.zip,
-    customer_city: cust.city,
-    ship_date: cust.shipDate,
-    order_items: itemsText,
-    order_total: '$' + parseFloat(total).toFixed(2)
+    customer_name: c.n,
+    customer_phone: c.ph,
+    customer_email: c.e,
+    customer_address: c.s + ', ' + c.c + ', ' + c.st + ' ' + c.z,
+    customer_city: c.c,
+    ship_date: c.d,
+    order_items: 'See Square for order details',
+    order_total: 'See Square for total'
   }).catch(err => console.error('Email error:', err));
 
 })();
